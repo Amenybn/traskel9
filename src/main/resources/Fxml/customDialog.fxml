@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.ProductController">
+    <children>
+        <VBox alignment="CENTER" layoutX="75.0" layoutY="52.0" spacing="10.0">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du produit" />
+                <TextField fx:id="nom" prefHeight="34.0" prefWidth="223.0" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix du produit" />
+                <TextField fx:id="prix" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie du produit" />
+                <ComboBox fx:id="ListeCat" prefWidth="150.0" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description du produit" />
+                <TextArea fx:id="descrp" prefHeight="100.0" prefWidth="200.0" />
+                <Button fx:id="telechargerImage" mnemonicParsing="false" onAction="#choisirImage" text="Télécharger une image" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

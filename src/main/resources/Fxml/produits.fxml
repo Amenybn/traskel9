@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="470.0" prefWidth="774.0" styleClass="form_container" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.ServiceProduit">
+   <children>
+      <VBox layoutX="95.0" layoutY="62.0" prefHeight="379.0" prefWidth="223.0" spacing="9.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du produit" />
+            <TextField fx:id="nom" prefHeight="34.0" prefWidth="223.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix du produit" />
+            <TextField fx:id="prix" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie du produit" />
+            <ComboBox fx:id="ListeCat" prefWidth="150.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Desciption du produit" />
+            <TextArea fx:id="descrp" prefHeight="100.0" prefWidth="200.0" />
+         </children>
+         <padding>
+            <Insets top="30.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="406.0" layoutY="62.0" prefHeight="367.0" prefWidth="310.0" spacing="20.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Photo du produit">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Text>
+            <ImageView fx:id="photo" fitHeight="131.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ImageView>
+            <Button fx:id="telechargerImage" mnemonicParsing="false" onAction="#choisirImage" text="Télécharger une image" />
+
+            <Button fx:id="ajouter" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#ajouter" prefHeight="30.0" prefWidth="168.0" text="Ajouter votre produit" />
+            <Button fx:id="annuler" mnemonicParsing="false" onAction="#annuler" prefHeight="30.0" prefWidth="182.0" text="Annuler" />
+         </children>
+         <padding>
+            <Insets top="30.0" />
+         </padding>
+      </VBox>
+      <Label layoutX="248.0" layoutY="21.0" styleClass="title" text="Ajouter votre produit" />
+   </children>
+</AnchorPane>
