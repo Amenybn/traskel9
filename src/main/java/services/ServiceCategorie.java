@@ -78,9 +78,11 @@ public class ServiceCategorie {
     @FXML
     private Label errorLabel;
 
+
+
+
     public void initialize() {
 
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
         nomm.setCellValueFactory(new PropertyValueFactory<>("categorie_prod"));
         addButtonToTable("Supprimer", this::deleteCategorie, "Supprimer");
         addButtonToTable("Modifier", this::updateCategorie, "Modifier");
@@ -93,6 +95,27 @@ public class ServiceCategorie {
         dialog.setTitle("Modifier la catégorie");
         dialog.setHeaderText(null);
         dialog.setContentText("Nouveau nom de catégorie :");
+
+        // Créer un Label pour le titre
+        Label titleLabel = new Label("Modifier la catégorie");
+        titleLabel.getStyleClass().add("title");
+        titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #10165F; -fx-padding: 20px 0 70px 40px;");
+
+        // Créer un VBox pour contenir le titre et le contenu du dialog
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(titleLabel, dialog.getDialogPane().getContent());
+
+        dialog.getDialogPane().setPrefWidth(400); // Définissez la largeur souhaitée
+        dialog.getDialogPane().setPrefHeight(300);
+
+        // Ajouter le fichier CSS personnalisé au dialog pane
+        dialog.getDialogPane().getStylesheets().add(getClass().getResource("/css/DashStyle.css").toExternalForm());
+
+        // Définir le contenu du dialog pane comme le VBox personnalisé
+        dialog.getDialogPane().setContent(vbox);
+
+        // Supprimer l'icône de l'en-tête
+        dialog.getDialogPane().setGraphic(null);
 
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(newName -> {
@@ -107,7 +130,9 @@ public class ServiceCategorie {
                 e.printStackTrace();
             }
             populateTableView();
-        });}
+        });
+    }
+
 
 
 
@@ -123,12 +148,12 @@ public class ServiceCategorie {
 
             while (rs.next()) {
                 Categorie categorie = new Categorie();
-                categorie.setId(rs.getInt("id"));
+
                 categorie.setCategorie_prod(rs.getString("categorie_prod"));
                 list.add(categorie);
             }
 
-            id.setCellValueFactory(new PropertyValueFactory<>("id"));
+
             nomm.setCellValueFactory(new PropertyValueFactory<>("categorie_prod"));
 
             table.setItems(list);
@@ -137,7 +162,7 @@ public class ServiceCategorie {
         }
     }
 
-   @FXML
+    @FXML
     public void deleteCategorie(Categorie categorie) {
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setTitle("Supprimer la catégorie");
@@ -147,9 +172,9 @@ public class ServiceCategorie {
         Optional<ButtonType> result = confirmationDialog.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             try (Connection conn = MyDatabase.getInstance().getConnection()) {
-                String sql = "DELETE FROM categorie_prod WHERE id=?";
+                String sql = "DELETE FROM categorie_prod WHERE categorie_prod=?";
                 try (PreparedStatement statement = conn.prepareStatement(sql)) {
-                    statement.setInt(1, categorie.getId());
+                    statement.setString(1, categorie.getCategorie_prod());
                     statement.executeUpdate();
                 }
             } catch (SQLException e) {
@@ -158,7 +183,7 @@ public class ServiceCategorie {
             afficher(null);
         }
 
-       populateTableView();
+        populateTableView();
     }
 
     public void handleClicks(ActionEvent actionEvent) {

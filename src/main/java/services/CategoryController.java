@@ -73,9 +73,13 @@ public class CategoryController {
 
     @FXML
     private Label errorLabel;
+    private Categorie categorie;
 
 
-
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+        categorie_prod.setText(categorie.getCategorie_prod());
+    }
 
     @FXML
     void ajouter(ActionEvent event) {
