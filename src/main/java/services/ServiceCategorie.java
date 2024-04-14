@@ -222,6 +222,7 @@ public class ServiceCategorie {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
     interface ButtonActionHandler {
