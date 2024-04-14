@@ -14,13 +14,20 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import utils.MyDatabase;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public class userProductController {
     ResultSet rs = null;
@@ -28,17 +35,20 @@ public class userProductController {
     private static final String url = "jdbc:mysql://localhost:3306/traskel";
     private static final String username = "root";
     private static final String password = "";
+
     @FXML
     private GridPane gridPane;
     @FXML
     private TableView<Produit> table;
-
+    private File selectedFile;
     @FXML
     private ComboBox<String> ListeCat;
+
     @FXML
     public void initialize() {
         afficher(null);
     }
+
     private Node createProductNode(Produit produit) {
         // Créer un VBox pour afficher les détails du produit
         VBox produitBox = new VBox();
@@ -83,6 +93,7 @@ public class userProductController {
         // Retourner le VBox contenant les détails du produit
         return produitBox;
     }
+
     public void updateProduit(Produit produit) {
         // Charger toutes les catégories depuis la base de données
         ObservableList<String> nomCategories = chargerCategories();
@@ -106,16 +117,33 @@ public class userProductController {
         titleLabel.getStyleClass().add("title");
         titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #10165F; -fx-padding: 40px 0 30px 40px;");
 
-        // Créer un VBox pour contenir le titre, les champs de saisie et les boutons
+        // Créer un ImageView pour afficher l'ancienne image du produit
+        ImageView oldImageView = new ImageView(new Image(new File(produit.getPhoto_prod()).toURI().toString()));
+        oldImageView.setFitWidth(150);
+        oldImageView.setFitHeight(150);
+
+        // Créer un bouton pour modifier la photo du produit
+        Button modifierPhotoButton = new Button("Modifier Photo");
+        modifierPhotoButton.setOnAction(e -> {
+            String newPhotoPath = modifierPhoto();
+            if (newPhotoPath != null) {
+                produit.setPhoto_prod(newPhotoPath);
+                // Mettre à jour l'ImageView avec la nouvelle image
+                oldImageView.setImage(new Image(new File(newPhotoPath).toURI().toString()));
+            }
+        });
+
+        // Créer un VBox pour contenir le titre, les champs de saisie, les boutons et l'image
         VBox vbox = new VBox();
         vbox.getChildren().addAll(titleLabel, new Label("Nom :"), dialog.getDialogPane().getContent(),
                 new Label("Prix :"), prixField,
                 new Label("Description :"), descriptionArea,
-                new Label("Catégorie du produit :"), categorieField);
+                new Label("Catégorie du produit :"), categorieField,
+                oldImageView, modifierPhotoButton);
 
         // Définir la largeur et la hauteur souhaitées pour le dialog pane
         dialog.getDialogPane().setPrefWidth(400);
-        dialog.getDialogPane().setPrefHeight(450); // Ajustez la hauteur pour inclure le ComboBox
+        dialog.getDialogPane().setPrefHeight(600); // Ajustez la hauteur pour inclure l'image et le bouton de modification de photo
 
         // Ajouter le fichier CSS personnalisé au dialog pane
         dialog.getDialogPane().getStylesheets().add(getClass().getResource("/css/DashStyle.css").toExternalForm());
@@ -130,13 +158,14 @@ public class userProductController {
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(newName -> {
             try (Connection conn = DriverManager.getConnection(url, username, password)) {
-                String sql = "UPDATE produit SET nom_prod=?, prix_prod=?, descrp_prod=?, type_prod=? WHERE id=?";
+                String sql = "UPDATE produit SET nom_prod=?, prix_prod=?, descrp_prod=?, type_prod=?, photo_prod=? WHERE id=?";
                 try (PreparedStatement statement = conn.prepareStatement(sql)) {
                     statement.setString(1, newName);
                     statement.setDouble(2, Double.parseDouble(prixField.getText()));
                     statement.setString(3, descriptionArea.getText());
                     statement.setString(4, categorieField.getValue()); // Récupérer la catégorie sélectionnée
-                    statement.setInt(5, produit.getId());
+                    statement.setString(5, produit.getPhoto_prod()); // Utiliser le nouveau chemin de la photo
+                    statement.setInt(6, produit.getId());
                     statement.executeUpdate();
                 }
             } catch (SQLException e) {
@@ -147,13 +176,25 @@ public class userProductController {
     }
 
 
+    private String modifierPhoto() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+        selectedFile = fileChooser.showOpenDialog(null);
 
+        if (selectedFile != null) {
+            try {
+                String fileName = UUID.randomUUID().toString() + selectedFile.getName();
+                Path targetPath = Paths.get("photos", fileName); // Chemin relatif au dossier images dans votre projet
+                Files.copy(selectedFile.toPath(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+                return targetPath.toString(); // Retourner le chemin de la nouvelle photo
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
-
-
-
-
-
+        return null; // Retourner null si aucune nouvelle photo n'est sélectionnée
+    }
 
     private ObservableList<String> chargerCategories() {
         // Charger les catégories depuis la base de données
@@ -167,7 +208,6 @@ public class userProductController {
 
         return nomCategories;
     }
-
 
     public void deleteProduit(Produit produit) {
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
@@ -190,6 +230,7 @@ public class userProductController {
             afficher(null);
         }
     }
+
     private List<Produit> loadProductsFromDatabase() {
         List<Produit> produits = new ArrayList<>();
 
@@ -234,8 +275,4 @@ public class userProductController {
             rowCount++;
         }
     }
-
-
-
-
 }

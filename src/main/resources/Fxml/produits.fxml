@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -21,7 +22,7 @@
             <TextField fx:id="prix" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie du produit" />
             <ComboBox fx:id="ListeCat" prefWidth="150.0" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Desciption du produit" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description du produit" />
             <TextArea fx:id="descrp" prefHeight="100.0" prefWidth="200.0" />
          </children>
          <padding>
@@ -36,12 +37,14 @@
                </VBox.margin>
             </Text>
             <ImageView fx:id="photo" fitHeight="131.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/1e5e310f-9a9a-44d2-996e-2ea66871d3f1imagee.png" />
+               </image>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
             </ImageView>
             <Button fx:id="telechargerImage" mnemonicParsing="false" onAction="#choisirImage" text="Télécharger une image" />
-
             <Button fx:id="ajouter" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#ajouter" prefHeight="30.0" prefWidth="168.0" text="Ajouter votre produit" />
             <Button fx:id="annuler" mnemonicParsing="false" onAction="#annuler" prefHeight="30.0" prefWidth="182.0" text="Annuler" />
          </children>

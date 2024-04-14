@@ -15,15 +15,16 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.TextField?>
-<?import java.lang.String?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
 <?import javafx.scene.control.ComboBox?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1087.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.ProductController">
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1087.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.ServiceProduit">
     <children>
         <AnchorPane prefHeight="519.0" prefWidth="262.0" style="-fx-background-color: #393351;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <VBox layoutY="160.0" prefHeight="356.0" prefWidth="262.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0">
+
                     <children>
                         <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Ben Affleck" textFill="WHITE">
                             <graphic>
@@ -91,40 +92,59 @@
 
         <Pane layoutX="262.0" prefHeight="649.0" prefWidth="631.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Pane layoutX="-25.0" layoutY="-178.0" prefHeight="303.0" prefWidth="407.0" rotate="41.6" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;" />
+                <Pane layoutX="-25.0" layoutY="-178.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;" />
+                <Pane layoutX="76.0" layoutY="106.0" style="-fx-background-color: #FFFFFF;">
 
-                <Pane layoutX="76.0" layoutY="106.0">
                     <children>
-                        <AnchorPane prefHeight="519.0" prefWidth="562.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                            <GridPane fx:id="gridPane" layoutX="79.0" layoutY="108.0" prefHeight="200.0" prefWidth="621.0">
-                            </GridPane>
-                        </AnchorPane>
+                        <VBox layoutX="95.0" layoutY="62.0" prefHeight="379.0" prefWidth="223.0" spacing="9.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du produit" />
+                                <TextField fx:id="nom" prefHeight="34.0" prefWidth="223.0" />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix du produit" />
+                                <TextField fx:id="prix" />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie du produit" />
+                                <ComboBox fx:id="ListeCat" prefWidth="150.0" />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description du produit" />
+                                <TextArea fx:id="descrp" prefHeight="100.0" prefWidth="200.0" />
+                            </children>
+                            <padding>
+                                <Insets top="30.0" />
+                            </padding>
+                        </VBox>
+                        <VBox layoutX="406.0" layoutY="62.0" prefHeight="367.0" prefWidth="310.0" spacing="20.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Photo du produit">
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </Text>
+                                <ImageView fx:id="photo" fitHeight="131.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../resources/1e5e310f-9a9a-44d2-996e-2ea66871d3f1imagee.png" />
+                                    </image>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </ImageView>
+                                <Button fx:id="telechargerImage" mnemonicParsing="false" onAction="#choisirImage" text="Télécharger une image" />
+                                <Button fx:id="ajouter" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#ajouter" prefHeight="30.0" prefWidth="168.0" text="Ajouter votre produit" />
+                                <Button fx:id="annuler" mnemonicParsing="false" onAction="#annuler" prefHeight="30.0" prefWidth="182.0" text="Annuler" />
+                            </children>
+                            <padding>
+                                <Insets top="30.0" />
+                            </padding>
+                        </VBox>
+
+                        <Label layoutX="25.0" layoutY="15.0" text="Ajouter un produit" textFill="#FA2C56">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+
+
                     </children>
-                    <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="400.0" stylesheets="@../css/styless.css" VBox.vgrow="NEVER">
-                        <VBox.margin>
-                            <Insets left="30.0" right="30.0" />
-                        </VBox.margin>
-                        <children>
-                            <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="search-button" stylesheets="@../css/styless.css" text="Search" textFill="WHITE" />
-                            <TextField prefHeight="40.0" prefWidth="235.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../css/styless.css">
-                                <HBox.margin>
-                                    <Insets right="20.0" />
-                                </HBox.margin>
-                                <font>
-                                    <Font name="Cambria" size="18.0" />
-                                </font>
-                            </TextField>
-                        </children>
-                        <styleClass>
-                            <String fx:value="search-box" />
-                            <String fx:value="shadow" />
-                        </styleClass>
-                    </HBox>
 
                 </Pane>
-                <ComboBox prefHeight="40.0" prefWidth="180.0" promptText="Tous les catégories">
-                    <!-- Ajoutez vos catégories ici -->
-                </ComboBox>
             </children>
         </Pane>
     </children>

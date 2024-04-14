@@ -116,7 +116,8 @@ public class ServiceProduit {
                 nom.clear();
                 descrp.clear();
                 prix.clear();
-                photo.setImage(null); // Effacer l'image affichée
+                photo.setImage(null);
+                // Effacer l'image affichée
 
             } else {
                 System.out.println("Aucune photo sélectionnée.");
@@ -141,25 +142,6 @@ public class ServiceProduit {
         // Ajouter les noms de catégories au ComboBoxn
         ListeCat.setItems(nomCategories);
     }
-
-
-
-    @FXML
-    void afficher(ActionEvent event) {
-        // Récupérer la liste des produits depuis le service de produit
-        List<Produit> produits = MyDatabase.getInstance().getAllProduits();
-
-        // Assigner les valeurs aux colonnes de la TableView
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nom_prod.setCellValueFactory(new PropertyValueFactory<>("nom_prod"));
-        prix_prod.setCellValueFactory(new PropertyValueFactory<>("prix_prod"));
-        descrp_prod.setCellValueFactory(new PropertyValueFactory<>("descrp_prod"));
-        photo_prod.setCellValueFactory(new PropertyValueFactory<>("photo_prod"));
-
-        table.getItems().setAll(produits);
-
-    }
-
 
 
     @FXML

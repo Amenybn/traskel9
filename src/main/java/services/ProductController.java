@@ -85,7 +85,6 @@ public class ProductController {
                 produits.add(produit);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         return produits;
