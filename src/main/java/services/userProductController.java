@@ -34,6 +34,8 @@ public class userProductController {
     private TableView<Produit> table;
 
     @FXML
+    private ComboBox<String> ListeCat;
+    @FXML
     public void initialize() {
         afficher(null);
     }
@@ -81,27 +83,39 @@ public class userProductController {
         // Retourner le VBox contenant les détails du produit
         return produitBox;
     }
-
-
     public void updateProduit(Produit produit) {
+        // Charger toutes les catégories depuis la base de données
+        ObservableList<String> nomCategories = chargerCategories();
+
         // Créer un TextInputDialog pour permettre à l'utilisateur de saisir les nouvelles valeurs
         TextInputDialog dialog = new TextInputDialog(produit.getNom_prod());
         dialog.setTitle("Modifier le produit");
         dialog.setHeaderText(null);
-        dialog.setContentText("Nouveau nom de produit :");
+
+        // Créer des champs de saisie pour le prix et la description
+        TextField prixField = new TextField(String.valueOf(produit.getPrix_prod()));
+        TextArea descriptionArea = new TextArea(produit.getDescrp_prod());
+        descriptionArea.setWrapText(true); // Pour que la description soit sur une seule ligne
+
+        // Créer le ComboBox pour la catégorie de produit
+        ComboBox<String> categorieField = new ComboBox<>(nomCategories);
+        categorieField.setValue(produit.getType_prod()); // Définir la catégorie actuelle du produit comme valeur sélectionnée dans le ComboBox
 
         // Créer un Label pour le titre
         Label titleLabel = new Label("Modifier le produit");
         titleLabel.getStyleClass().add("title");
-        titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #10165F; -fx-padding: 20px 0 70px 40px;");
+        titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #10165F; -fx-padding: 40px 0 30px 40px;");
 
-        // Créer un VBox pour contenir le titre et le contenu du dialog
+        // Créer un VBox pour contenir le titre, les champs de saisie et les boutons
         VBox vbox = new VBox();
-        vbox.getChildren().addAll(titleLabel, dialog.getDialogPane().getContent());
+        vbox.getChildren().addAll(titleLabel, new Label("Nom :"), dialog.getDialogPane().getContent(),
+                new Label("Prix :"), prixField,
+                new Label("Description :"), descriptionArea,
+                new Label("Catégorie du produit :"), categorieField);
 
         // Définir la largeur et la hauteur souhaitées pour le dialog pane
         dialog.getDialogPane().setPrefWidth(400);
-        dialog.getDialogPane().setPrefHeight(300);
+        dialog.getDialogPane().setPrefHeight(450); // Ajustez la hauteur pour inclure le ComboBox
 
         // Ajouter le fichier CSS personnalisé au dialog pane
         dialog.getDialogPane().getStylesheets().add(getClass().getResource("/css/DashStyle.css").toExternalForm());
@@ -116,16 +130,19 @@ public class userProductController {
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(newName -> {
             try (Connection conn = DriverManager.getConnection(url, username, password)) {
-                String sql = "UPDATE produit SET nom_prod=? WHERE id=?";
+                String sql = "UPDATE produit SET nom_prod=?, prix_prod=?, descrp_prod=?, type_prod=? WHERE id=?";
                 try (PreparedStatement statement = conn.prepareStatement(sql)) {
                     statement.setString(1, newName);
-                    statement.setInt(2, produit.getId());
+                    statement.setDouble(2, Double.parseDouble(prixField.getText()));
+                    statement.setString(3, descriptionArea.getText());
+                    statement.setString(4, categorieField.getValue()); // Récupérer la catégorie sélectionnée
+                    statement.setInt(5, produit.getId());
                     statement.executeUpdate();
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            populateTableView(); // Mettre à jour l'affichage après la modification du produit
+            afficher(null); // Mettre à jour l'affichage après la modification du produit
         });
     }
 
@@ -133,29 +150,22 @@ public class userProductController {
 
 
 
-    private void populateTableView() {
-        try (Connection conn = DriverManager.getConnection(url, username, password);
-             Statement statement = conn.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM produit")) {
 
-            ObservableList<Produit> produits = FXCollections.observableArrayList();
-            while (resultSet.next()) {
-                Produit produit = new Produit();
-                produit.setId(resultSet.getInt("id"));
-                produit.setNom_prod(resultSet.getString("nom_prod"));
-                produit.setDescrp_prod(resultSet.getString("descrp_prod"));
-                produit.setPrix_prod(resultSet.getDouble("prix_prod"));
-                produit.setType_prod(resultSet.getString("photo_prod")); // Utilisez resultSet au lieu de rs
-                produits.add(produit);
-            }
-            table.setItems(produits);
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+
+
+
+    private ObservableList<String> chargerCategories() {
+        // Charger les catégories depuis la base de données
+        List<Categorie> categories = MyDatabase.getInstance().getAllCategories();
+
+        // Créer une liste observable des noms de catégories
+        ObservableList<String> nomCategories = FXCollections.observableArrayList();
+        for (Categorie categorie : categories) {
+            nomCategories.add(categorie.getCategorie_prod());
         }
-    }
 
-    interface ButtonActionHandler {
-        void handle(Produit produit);
+        return nomCategories;
     }
 
 

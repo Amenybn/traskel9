@@ -11,6 +11,7 @@ public class Categorie {
     }
     public Categorie() {
     }
+
     public int getId() {
         return id;
     }
@@ -31,4 +32,7 @@ public class Categorie {
 
                 '}';
     }
+
+
+
 }

@@ -64,6 +64,8 @@ public class Produit {
         return type_prod;
     }
 
+
+
     public void setType_prod(String type_prod) {
         this.type_prod = type_prod;
     }

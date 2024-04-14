@@ -102,7 +102,9 @@
     -fx-font-weight: bold; /* Texte en gras */
     -fx-alignment: center; /* Alignement au centre */
 }
-
+.dialog-pane .label {
+    -fx-text-fill: #05071F;
+}
 /* Style pour le contenu */
 .dialog-pane .content {
     -fx-font-weight: bold; /* Texte en gras */

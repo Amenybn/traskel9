@@ -95,28 +95,21 @@ public class ServiceCategorie {
         dialog.setTitle("Modifier la catégorie");
         dialog.setHeaderText(null);
         dialog.setContentText("Nouveau nom de catégorie :");
-
         // Créer un Label pour le titre
         Label titleLabel = new Label("Modifier la catégorie");
         titleLabel.getStyleClass().add("title");
         titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #10165F; -fx-padding: 20px 0 70px 40px;");
-
         // Créer un VBox pour contenir le titre et le contenu du dialog
         VBox vbox = new VBox();
         vbox.getChildren().addAll(titleLabel, dialog.getDialogPane().getContent());
-
         dialog.getDialogPane().setPrefWidth(400); // Définissez la largeur souhaitée
         dialog.getDialogPane().setPrefHeight(300);
-
         // Ajouter le fichier CSS personnalisé au dialog pane
         dialog.getDialogPane().getStylesheets().add(getClass().getResource("/css/DashStyle.css").toExternalForm());
-
         // Définir le contenu du dialog pane comme le VBox personnalisé
         dialog.getDialogPane().setContent(vbox);
-
         // Supprimer l'icône de l'en-tête
         dialog.getDialogPane().setGraphic(null);
-
         Optional<String> result = dialog.showAndWait();
         result.ifPresent(newName -> {
             try (Connection conn = DriverManager.getConnection(url, username, password)) {
