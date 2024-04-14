@@ -6,16 +6,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import utils.MyDatabase;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -73,8 +78,32 @@ public class ProductController {
         // Définir le style du VBox
         produitBox.setStyle("-fx-background-color: #393351; -fx-background-radius: 10px; -fx-padding: 20px;"); // Pour définir la couleur de fond en blanc et arrondir les coins du VBox
         produitBox.setMargin(produitBox, new Insets(0, 20, 0, 0));
+
+        // Ajouter un gestionnaire d'événements pour le clic sur chaque produit
+        produitBox.setOnMouseClicked(event -> {
+            try {
+                showProductDetails(produit);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
         // Retourner le VBox contenant les détails du produit
         return produitBox;
+    }
+
+    private void showProductDetails(Produit produit) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/DetailsProd.fxml"));
+        Parent root = loader.load();
+
+        // Passer le produit sélectionné au contrôleur de la page DetailsProd
+        DetailsProdController detailsProdController = loader.getController();
+        detailsProdController.initData(produit);
+
+        // Afficher la scène avec les détails du produit
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     private List<Produit> loadProductsFromDatabase(String category) {
