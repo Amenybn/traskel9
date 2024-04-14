@@ -34,6 +34,9 @@ public class ProductController {
     private ComboBox<String> categoryComboBox;
 
     @FXML
+    private TextField searchTextField;
+
+    @FXML
     public void initialize() {
         chargerCategories();
         loadProducts(null);
@@ -160,5 +163,72 @@ public class ProductController {
         } else {
             loadProducts(selectedCategory); // Charge les produits de la catégorie sélectionnée
         }
+    }
+
+    @FXML
+    void handleSearch(ActionEvent event) {
+        String searchTerm = searchTextField.getText();
+        String selectedCategory = categoryComboBox.getSelectionModel().getSelectedItem();
+        if (selectedCategory == null || selectedCategory.isEmpty() || "Tous les catégories".equals(selectedCategory)) {
+            searchProducts(searchTerm, null); // Recherche dans tous les produits si aucune catégorie n'est sélectionnée
+        } else {
+            searchProducts(searchTerm, selectedCategory); // Recherche dans la catégorie sélectionnée
+        }
+    }
+
+    private void searchProducts(String searchTerm, String category) {
+        gridPane.getChildren().clear(); // Efface les anciens éléments de la grille
+        int columnCount = 3; // Nombre de colonnes dans la grille
+        int rowCount = 0; // Compteur de lignes
+
+        // Charger les produits depuis la base de données ou tout autre source de données
+        List<Produit> produits = searchProductsFromDatabase(searchTerm, category);
+
+        for (Produit produit : produits) {
+            // Créer un élément d'affichage pour chaque produit (par exemple, un VBox avec une image, un nom et un prix)
+            Node produitNode = createProductNode(produit);
+
+            // Ajouter l'élément dans la grille
+            gridPane.add(produitNode, rowCount % columnCount, rowCount / columnCount);
+            rowCount++;
+        }
+    }
+
+    private List<Produit> searchProductsFromDatabase(String searchTerm, String category) {
+        List<Produit> produits = new ArrayList<>();
+        String query;
+
+        if (category == null || category.isEmpty()) {
+            query = "SELECT * FROM produit WHERE nom_prod LIKE ?";
+        } else {
+            query = "SELECT * FROM produit WHERE nom_prod LIKE ? AND type_prod = ?";
+        }
+
+        try (Connection conn = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = conn.prepareStatement(query)) {
+
+            statement.setString(1, "%" + searchTerm + "%");
+
+            if (category != null && !category.isEmpty()) { // Vérifie si une catégorie est sélectionnée
+                statement.setString(2, category);
+            }
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Produit produit = new Produit();
+                    produit.setId(resultSet.getInt("id"));
+                    produit.setNom_prod(resultSet.getString("nom_prod"));
+                    produit.setDescrp_prod(resultSet.getString("descrp_prod"));
+                    produit.setPhoto_prod(resultSet.getString("photo_prod"));
+                    produit.setPrix_prod(resultSet.getDouble("prix_prod"));
+                    produit.setType_prod(resultSet.getString("type_prod"));
+                    produits.add(produit);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return produits;
     }
 }
