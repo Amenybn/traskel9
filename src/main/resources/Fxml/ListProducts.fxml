@@ -19,6 +19,7 @@
 <?import java.lang.String?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1087.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.ProductController">
     <children>
         <AnchorPane prefHeight="519.0" prefWidth="262.0" style="-fx-background-color: #393351;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -122,8 +123,8 @@
                     </HBox>
 
                 </Pane>
-                <ComboBox prefHeight="40.0" prefWidth="180.0" promptText="Tous les catégories">
-                    <!-- Ajoutez vos catégories ici -->
+                <ComboBox fx:id="categoryComboBox"  prefHeight="40.0" prefWidth="180.0" promptText="Tous les catégories">
+
                 </ComboBox>
             </children>
         </Pane>
