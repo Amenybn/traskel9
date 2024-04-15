@@ -1,9 +1,6 @@
-package services;
-
-import entities.Categorie;
+package Controllers;
 import entities.Produit;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,24 +14,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import utils.MyDatabase;
-
+import services.DetailsProdController;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static services.ServiceCategory.chargerCategories;
 public class ProductController {
-    ResultSet rs = null;
-
     private static final String url = "jdbc:mysql://localhost:3306/traskel";
     private static final String username = "root";
     private static final String password = "";
 
     @FXML
     private GridPane gridPane;
-
     @FXML
     private ComboBox<String> categoryComboBox;
 
@@ -43,42 +37,37 @@ public class ProductController {
 
     @FXML
     public void initialize() {
-        chargerCategories();
+
+        List<String> categories = chargerCategories();
+        categories.add(0, "Tous les catégories");
+        categoryComboBox.setItems(FXCollections.observableArrayList(categories)); //màj liste cat
         loadProducts(null);
+
+        // Ajouter un gestionnaire d'événements pour le ComboBox des catégories
         categoryComboBox.setOnAction(this::handleCategorySelection);
     }
 
     private Node createProductNode(Produit produit) {
-        // Créer un VBox pour afficher les détails du produit
+
         VBox produitBox = new VBox();
         produitBox.setSpacing(20); // Augmenter l'espace entre les boîtes
-        produitBox.setPadding(new Insets(20, 20, 20, 20)); // Ajouter de la marge autour du VBox
-
+        produitBox.setPadding(new Insets(20, 20, 20, 20));
         // Ajouter une image du produit
         ImageView imageView = new ImageView(new Image(new File(produit.getPhoto_prod()).toURI().toString()));
         imageView.setFitWidth(150);
         imageView.setFitHeight(150);
-
         // Ajouter le nom du produit
         Label nameLabel = new Label(produit.getNom_prod());
         nameLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
-
-        // Ajouter le prix du produit
         Label priceLabel = new Label(produit.getPrix_prod() + "€");
         priceLabel.setStyle("-fx-text-fill: white;");
-
-        // Ajouter la description du produit
         Label descriptionLabel = new Label(produit.getDescrp_prod());
         descriptionLabel.setWrapText(true); // Pour que la description soit sur une seule ligne
         descriptionLabel.setStyle("-fx-text-fill: white;");
-
         // Ajouter les éléments dans le VBox
         produitBox.getChildren().addAll(imageView, nameLabel, priceLabel, descriptionLabel);
-
         // Définir le style du VBox
         produitBox.setStyle("-fx-background-color: #393351; -fx-background-radius: 10px; -fx-padding: 20px;"); // Pour définir la couleur de fond en blanc et arrondir les coins du VBox
-        produitBox.setMargin(produitBox, new Insets(0, 20, 0, 0));
-
         // Ajouter un gestionnaire d'événements pour le clic sur chaque produit
         produitBox.setOnMouseClicked(event -> {
             try {
@@ -87,8 +76,6 @@ public class ProductController {
                 e.printStackTrace();
             }
         });
-
-        // Retourner le VBox contenant les détails du produit
         return produitBox;
     }
 
@@ -111,7 +98,7 @@ public class ProductController {
         String query;
 
         if (category == null || category.isEmpty()) {
-            query = "SELECT * FROM produit"; // Sélectionne tous les produits si aucune catégorie n'est sélectionnée
+            query = "SELECT * FROM produit";
         } else {
             query = "SELECT * FROM produit WHERE type_prod = ?";
         }
@@ -142,19 +129,7 @@ public class ProductController {
         return produits;
     }
 
-    private void chargerCategories() {
-        // Charger les catégories depuis la base de données
-        List<Categorie> categories = MyDatabase.getInstance().getAllCategories();
 
-        // Créer une liste observable des noms de catégories
-        ObservableList<String> nomCategories = FXCollections.observableArrayList("Tous les catégories");
-        for (Categorie categorie : categories) {
-            nomCategories.add(categorie.getCategorie_prod());
-        }
-
-        // Ajouter les noms de catégories au ComboBox
-        categoryComboBox.setItems(nomCategories);
-    }
 
     private void loadProducts(String category) {
         gridPane.getChildren().clear(); // Efface les anciens éléments de la grille
@@ -181,16 +156,16 @@ public class ProductController {
     }
 
     private List<Produit> loadAllProductsFromDatabase() {
-        return loadProductsFromDatabase(null); // Charge tous les produits
+        return loadProductsFromDatabase(null);
     }
 
     @FXML
     void handleCategorySelection(ActionEvent event) {
         String selectedCategory = categoryComboBox.getSelectionModel().getSelectedItem();
         if (selectedCategory == null || selectedCategory.isEmpty()) {
-            loadProducts(null); // Charge tous les produits
+            loadProducts(null);
         } else {
-            loadProducts(selectedCategory); // Charge les produits de la catégorie sélectionnée
+            loadProducts(selectedCategory);
         }
     }
 
@@ -198,17 +173,19 @@ public class ProductController {
     void handleSearch(ActionEvent event) {
         String searchTerm = searchTextField.getText();
         String selectedCategory = categoryComboBox.getSelectionModel().getSelectedItem();
+
+
         if (selectedCategory == null || selectedCategory.isEmpty() || "Tous les catégories".equals(selectedCategory)) {
-            searchProducts(searchTerm, null); // Recherche dans tous les produits si aucune catégorie n'est sélectionnée
+            searchProducts(searchTerm, null);
         } else {
-            searchProducts(searchTerm, selectedCategory); // Recherche dans la catégorie sélectionnée
+            searchProducts(searchTerm, selectedCategory);
         }
     }
 
     private void searchProducts(String searchTerm, String category) {
-        gridPane.getChildren().clear(); // Efface les anciens éléments de la grille
-        int columnCount = 3; // Nombre de colonnes dans la grille
-        int rowCount = 0; // Compteur de lignes
+        gridPane.getChildren().clear();
+        int columnCount = 3;
+        int rowCount = 0;
 
         // Charger les produits depuis la base de données ou tout autre source de données
         List<Produit> produits = searchProductsFromDatabase(searchTerm, category);

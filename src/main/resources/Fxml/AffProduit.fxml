@@ -3,11 +3,10 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import services.CustomImageCellFactory?>
 
 
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<AnchorPane prefHeight="440.0" prefWidth="774.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.ProductController">
+<AnchorPane prefHeight="440.0" prefWidth="774.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProductController">
     <children>
         <Label layoutX="274.0" layoutY="44.0" styleClass="title" text="Liste des produits" />
         <TableView fx:id="table" layoutX="79.0" layoutY="108.0" prefHeight="200.0" prefWidth="621.0">

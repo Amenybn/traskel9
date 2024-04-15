@@ -8,5 +8,7 @@ module WorkshopJDBC3A56 {
     opens services;
     exports services;
     opens entities to javafx.base;
+    exports Controllers;
+    opens Controllers;
 
 }

@@ -1,122 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TextArea?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1087.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.ServiceProduit">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="1214.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ControllerAjoutProd">
     <children>
-        <AnchorPane prefHeight="519.0" prefWidth="262.0" style="-fx-background-color: #393351;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <!-- Sidebar -->
+        <VBox prefHeight="109.0" style="-fx-background-color: #393351;" AnchorPane.bottomAnchor="620.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <VBox layoutY="160.0" prefHeight="356.0" prefWidth="262.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="160.0">
 
-                    <children>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Ben Affleck" textFill="WHITE">
-                            <graphic>
-                                <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../resources/ben-affleck.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <VBox.margin>
-                                <Insets />
-                            </VBox.margin>
-                            <padding>
-                                <Insets left="40.0" />
-                            </padding></Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Jimmy Mason" textFill="WHITE">
-                            <graphic>
-                                <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../resources/ic_usr.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <padding>
-                                <Insets left="40.0" />
-                            </padding>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Alex Mainman" textFill="WHITE">
-                            <graphic>
-                                <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../resources/profile-adam-levine.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <padding>
-                                <Insets left="40.0" />
-                            </padding>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="262.0" styleClass="button1" stylesheets="@../css/fullpackstyling.css" text="Rob Damien" textFill="WHITE">
-                            <graphic>
-                                <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../resources/profile-james-marsden.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                            <padding>
-                                <Insets left="40.0" />
-                            </padding>
-                        </Button>
-                    </children>
-                </VBox>
+                <!-- Footer -->
+                <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="1211.0" style="-fx-background-color: #1F1D2B;">
+               <children>
+                         <ImageView fitHeight="50.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                             <image>
+                                 <Image url="@../resources/icons8_Home_32px.png" />
+                             </image>
+                     <HBox.margin>
+                        <Insets left="10.0" right="5.0" />
+                     </HBox.margin>
+                         </ImageView>
+                  <Label graphicTextGap="7.0" text="TRASKEL" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="7.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label graphicTextGap="7.0" text="Home" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="200.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label graphicTextGap="7.0" text="Shop" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label graphicTextGap="7.0" text="Services" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label graphicTextGap="7.0" text="Contact Us" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                          <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../resources/icons8_Person_32px.png" />
+                              </image>
+                     <HBox.margin>
+                        <Insets left="150.0" />
+                     </HBox.margin>
+                          </ImageView>
+                  <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/icons8_Person_32px.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+                </HBox>
+            </children>
+        </VBox>
 
-                <Pane layoutY="86.0" prefHeight="61.0" prefWidth="262.0" style="-fx-background-color: #FA2C56; -fx-background-radius: 5;">
-                    <children>
-                        <Label layoutX="25.0" layoutY="17.0" text="Home Space" textFill="WHITE">
-                            <font>
-                                <Font name="System Bold" size="18.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </Pane>
-            </children></AnchorPane>
-
-        <Pane layoutX="262.0" prefHeight="649.0" prefWidth="631.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
+              <!-- Main Content -->
+        <Pane layoutX="262.0" layoutY="138.4" prefHeight="511.0" prefWidth="829.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="138.0">
             <children>
-                <Pane layoutX="-25.0" layoutY="-178.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;" />
-                <Pane layoutX="76.0" layoutY="106.0" style="-fx-background-color: #FFFFFF;">
+                <!-- Background -->
+                <Pane layoutX="-290.0" layoutY="50.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;" />
 
+                      <!-- Form -->
+                <Pane layoutX="-78.0" layoutY="56.0" prefHeight="492.0" prefWidth="716.0" style="-fx-background-color: #FFFFFF;">
                     <children>
-                        <VBox layoutX="95.0" layoutY="62.0" prefHeight="379.0" prefWidth="223.0" spacing="9.0">
+                        <VBox layoutX="95.0" layoutY="62.0" prefHeight="393.0" prefWidth="223.0" spacing="9.0">
+                            <!-- Form Fields -->
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du produit" />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du produit">
+                           <font>
+                              <Font name="System Italic" size="16.0" />
+                           </font>
+                        </Text>
                                 <TextField fx:id="nom" prefHeight="34.0" prefWidth="223.0" />
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix du produit" />
+                                <Label fx:id="nomValidationLabel" textFill="RED" /> <!-- Nouvelle étiquette d'erreur pour le nom -->
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix du produit">
+                           <font>
+                              <Font name="System Italic" size="16.0" />
+                           </font>
+                        </Text>
                                 <TextField fx:id="prix" />
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie du produit" />
+                                <Label fx:id="prixValidationLabel" textFill="RED" /> <!-- Nouvelle étiquette d'erreur pour le prix -->
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie du produit">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
                                 <ComboBox fx:id="ListeCat" prefWidth="150.0" />
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description du produit" />
-                                <TextArea fx:id="descrp" prefHeight="100.0" prefWidth="200.0" />
+                                <Label fx:id="catValidationLabel" textFill="RED" />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description du produit">
+                           <font>
+                              <Font name="System Italic" size="16.0" />
+                           </font>
+                        </Text>
+                                <TextArea fx:id="descrp" prefHeight="66.0" prefWidth="223.0" />
                             </children>
                             <padding>
                                 <Insets top="30.0" />
                             </padding>
                         </VBox>
-                        <VBox layoutX="406.0" layoutY="62.0" prefHeight="367.0" prefWidth="310.0" spacing="20.0">
+
+                              <!-- Image Upload Section -->
+                        <VBox layoutX="406.0" layoutY="62.0" prefHeight="393.0" prefWidth="310.0" spacing="20.0">
                             <children>
                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Photo du produit">
                                     <VBox.margin>
                                         <Insets />
                                     </VBox.margin>
+                           <font>
+                              <Font name="System Italic" size="16.0" />
+                           </font>
                                 </Text>
                                 <ImageView fx:id="photo" fitHeight="131.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -127,6 +158,9 @@
                                     </VBox.margin>
                                 </ImageView>
                                 <Button fx:id="telechargerImage" mnemonicParsing="false" onAction="#choisirImage" text="Télécharger une image" />
+                                <Label fx:id="photoValidationLabel" textFill="RED" />
+
+                                      <!-- Ajout de la logique de validation -->
                                 <Button fx:id="ajouter" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#ajouter" prefHeight="30.0" prefWidth="168.0" text="Ajouter votre produit" />
                                 <Button fx:id="annuler" mnemonicParsing="false" onAction="#annuler" prefHeight="30.0" prefWidth="182.0" text="Annuler" />
                             </children>
@@ -135,15 +169,18 @@
                             </padding>
                         </VBox>
 
-                        <Label layoutX="25.0" layoutY="15.0" text="Ajouter un produit" textFill="#FA2C56">
-                            <font>
-                                <Font name="System Bold" size="18.0" />
-                            </font>
-                        </Label>
-
-
+                            <!-- Title -->
+                      <Label layoutX="279.0" layoutY="35.0" text="Ajouter un produit" textFill="#FA2C56">
+                          <font>
+                              <Font name="System Bold Italic" size="18.0" />
+                          </font>
+                      </Label>
+                          <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="10.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../resources/icons8_Shopping_Cart_50px_2.png" />
+                              </image>
+                          </ImageView>
                     </children>
-
                 </Pane>
             </children>
         </Pane>

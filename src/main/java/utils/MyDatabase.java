@@ -8,33 +8,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyDatabase {
-
+// les informations de con
     static String URL="jdbc:mysql://localhost:3306/traskel";
 
     static String USERNAME="root";
     static String PASSWORD="";
-    static String driver ="com.mysql.cj.jdbc.Driver";
-    Connection connection;
+    static String driver ="com.mysql.cj.jdbc.Driver"; // contient le nom de la classe du pilote JDBC MySQL
+    Connection connection; //exécuter req SQL et récupérer le résultat
 
     static MyDatabase instance;
 
-  /*  public static Connection getCon(){
-        Connection con = null;
-        try {
-            Class.forName(driver);
-            try {
-                con = DriverManager.getConnection(URL,USERNAME,PASSWORD);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
 
-
-        return con;
-    }*/
-
+    //constructeur
     private MyDatabase(){
         try {
             connection= DriverManager.getConnection(URL,USERNAME,PASSWORD);
@@ -52,35 +37,11 @@ public class MyDatabase {
     }
 
 
-    public List<Produit> getAllProduits() {
-        List<Produit> produits = new ArrayList<>();
-        String query = "SELECT * FROM produit";
-
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next()) {
-                Produit produit = new Produit();
-                produit.setId(resultSet.getInt("id"));
-                produit.setNom_prod(resultSet.getString("nom_prod"));
-                produit.setPrix_prod(resultSet.getDouble("prix_prod"));
-                produit.setDescrp_prod(resultSet.getString("descrp_prod"));
-                produit.setPhoto_prod(resultSet.getString("photo_prod"));
-                produits.add(produit);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return produits;
-    }
-
-
     public List<Categorie> getAllCategories() {
         List<Categorie> categories = new ArrayList<>();
         String query = "SELECT * FROM categorie_prod";
 
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(query)) {  // prepareStatement un objet utilisé pour préparer une instruction SQL
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -98,14 +59,13 @@ public class MyDatabase {
     }
 
 
-
-
-
-
-
-
-
     public Connection getConnection() {
         return connection;
     }
 }
+/* pom.xml est un fichier de configuration utilisé par Apache Maven,
+un outil de gestion de projet utilisé principalement pour les projets Java.
+ Gestion des dépendances
+ Configuration du projet
+ Gestion des plugins
+ Configuration de la structure du projet*/
