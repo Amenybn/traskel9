@@ -1,0 +1,74 @@
+.top-buttons {
+    -fx-background-color: #f0f0f0;
+    -fx-padding: 10px;
+    -fx-border-color: #ccc;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.top-button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+    -fx-padding: 5px 10px;
+    -fx-background-color: #fff;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.top-button:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+.top-button:pressed {
+    -fx-background-color: #e0e0e0;
+}
+/* Styles for the top-level BorderPane */
+.border-pane {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Styles for the top HBox containing the buttons */
+.top-hbox {
+    -fx-spacing: 10;
+    -fx-padding: 10;
+    -fx-alignment: CENTER;
+}
+
+/* Styles for the buttons */
+.button {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.button:hover {
+    -fx-background-color: #45a049; /* Darker Green */
+}
+
+/* Styles for the TableView */
+.table-view {
+    -fx-background-color: white;
+}
+
+/* Styles for the TableView columns */
+.table-column {
+    -fx-alignment: CENTER;
+}
+
+/* Styles for the TableView cells */
+.table-cell {
+    -fx-alignment: CENTER;
+    -fx-padding: 5;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0 0 1 0; /* Bottom border only */
+}
+
+/* Styles for the TableView headers */
+.table-header {
+    -fx-font-weight: bold;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0 0 1 0; /* Bottom border only */
+}

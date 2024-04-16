@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.event.ActionEvent?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.traskelfx.HelloController">
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <top>
+        <HBox alignment="CENTER" spacing="20" styleClass="top-buttons">
+            <Button text="Gestion Commandes" onAction="#goToCommandeView" styleClass="top-button"/>
+            <Button text="Gestion Paniers" onAction="#goToPanierView" styleClass="top-button"/>
+        </HBox>
+    </top>
+
+    <center>
+        <!-- Le contenu de la vue sera chargé dynamiquement ici -->
+        <!-- Lorsqu'un des boutons est cliqué -->
+    </center>
+
+</BorderPane>
