@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.traskelfx.CommandeController"
+            fx:id="borderPane"
+            stylesheets="@style.css">
+    <top>
+        <Button text="Add Commande" onAction="#addCommande"/>
+    </top>
+
+    <center>
+        <TableView fx:id="tableView">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="adresseColumn" text="Adresse" prefWidth="150"/>
+                <TableColumn fx:id="statutColumn" text="Statut" prefWidth="100"/>
+                <TableColumn fx:id="prixColumn" text="Prix" prefWidth="75"/>
+                <TableColumn fx:id="delaiColumn" text="Délai" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>
