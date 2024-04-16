@@ -16,10 +16,14 @@ import javafx.stage.Stage;
 import utils.MyDatabase;
 import java.io.IOException;
 import java.sql.*;
+import java.util.List;
 import java.util.Optional;
 
 
 public class ServiceCategorie {
+    private static final String url = "jdbc:mysql://localhost:3306/traskel";
+    private static final String username = "root";
+    private static final String password = "";
     Connection con = null;
     PreparedStatement st = null;
     ResultSet rs = null;
@@ -30,18 +34,8 @@ public class ServiceCategorie {
     private TableColumn<Categorie, String> nomm;
 
     @FXML
-    private TableColumn<Categorie, Integer> id;
-
-    private static final String url = "jdbc:mysql://localhost:3306/traskel";
-    private static final String username = "root";
-    private static final String password = "";
-
-    @FXML
     private TableView<Categorie> table;
-    @FXML
-    private Categorie categorieToModify;
-    @FXML
-    private VBox pnItems = null;
+
     @FXML
     private Button btnOverview;
 
@@ -55,15 +49,6 @@ public class ServiceCategorie {
     private Button btnMenus;
 
     @FXML
-    private Button btnPackages;
-
-    @FXML
-    private Button btnSettings;
-
-    @FXML
-    private Button btnSignout;
-
-    @FXML
     private Pane pnlCustomer;
 
     @FXML
@@ -75,8 +60,6 @@ public class ServiceCategorie {
     @FXML
     private Pane pnlMenus;
 
-    @FXML
-    private Label errorLabel;
 
 
 
@@ -95,14 +78,15 @@ public class ServiceCategorie {
         dialog.setTitle("Modifier la catégorie");
         dialog.setHeaderText(null);
         dialog.setContentText("Nouveau nom de catégorie :");
+
         // Créer un Label pour le titre
         Label titleLabel = new Label("Modifier la catégorie");
         titleLabel.getStyleClass().add("title");
-        titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #10165F; -fx-padding: 20px 0 70px 40px;");
+        titleLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 20px; -fx-text-fill: #10165F; -fx-padding: 20px 0 70px 100px;");
         // Créer un VBox pour contenir le titre et le contenu du dialog
         VBox vbox = new VBox();
         vbox.getChildren().addAll(titleLabel, dialog.getDialogPane().getContent());
-        dialog.getDialogPane().setPrefWidth(400); // Définissez la largeur souhaitée
+        dialog.getDialogPane().setPrefWidth(500); // Définissez la largeur souhaitée
         dialog.getDialogPane().setPrefHeight(300);
         // Ajouter le fichier CSS personnalisé au dialog pane
         dialog.getDialogPane().getStylesheets().add(getClass().getResource("/css/DashStyle.css").toExternalForm());
@@ -138,14 +122,12 @@ public class ServiceCategorie {
         try {
             st = con.prepareStatement(query);
             rs = st.executeQuery();
-
             while (rs.next()) {
                 Categorie categorie = new Categorie();
 
                 categorie.setCategorie_prod(rs.getString("categorie_prod"));
                 list.add(categorie);
             }
-
 
             nomm.setCellValueFactory(new PropertyValueFactory<>("categorie_prod"));
 
@@ -183,20 +165,7 @@ public class ServiceCategorie {
         if (actionEvent.getSource() == btnCustomers) {
             pnlCustomer.setStyle("-fx-background-color : #1620A1");
             pnlCustomer.toFront();
-        }
-        if (actionEvent.getSource() == btnMenus) {
-            pnlMenus.setStyle("-fx-background-color : #53639F");
-            pnlMenus.toFront();
-        }
-        if (actionEvent.getSource() == btnOverview) {
-            pnlOverview.setStyle("-fx-background-color : #02030A");
-            pnlOverview.toFront();
-        }
-        if(actionEvent.getSource()==btnOrders)
-        {
-            pnlOrders.setStyle("-fx-background-color : #464F67");
-            pnlOrders.toFront();
-        }
+     }
     }
     private void populateTableView() {
         try (Connection conn = DriverManager.getConnection(url, username, password);
@@ -246,6 +215,16 @@ public class ServiceCategorie {
             }
         });
         table.getColumns().add(column);
+    }
+
+
+    public static ObservableList<String> chargerCategories() {
+        List<Categorie> categories = MyDatabase.getInstance().getAllCategories();
+        ObservableList<String> nomCategories = FXCollections.observableArrayList();
+        for (Categorie categorie : categories) {
+            nomCategories.add(categorie.getCategorie_prod());
+        }
+        return nomCategories;
     }
 
 

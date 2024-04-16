@@ -1,120 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.TextField?>
-<?import java.lang.String?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.layout.BorderPane?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1087.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.DetailsProdController">
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1087.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DetailsProdController">
     <children>
-
-
-        <Pane layoutX="262.0" prefHeight="649.0" prefWidth="631.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <center>
-                        <VBox prefHeight="810.0" prefWidth="687.0" BorderPane.alignment="CENTER">
-                            <children>
-                                <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
-                                    <VBox.margin>
-                                        <Insets left="20.0" right="20.0" />
-                                    </VBox.margin>
-                                </HBox>
-                                <HBox prefHeight="100.0" prefWidth="200.0">
-                                    <children>
-                                        <Pane prefHeight="84.0" prefWidth="96.0" />
-                                        <VBox prefHeight="200.0" prefWidth="100.0" />
-                                        <VBox alignment="CENTER" prefHeight="647.0" prefWidth="735.0" styleClass="right-bar" stylesheets="@../css/styless.css">
-                                            <children>
-                                                <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="535.0" prefWidth="650.0" stylesheets="@../css/styless.css">
-                                                    <VBox.margin>
-                                                        <Insets left="50.0" right="50.0" />
-                                                    </VBox.margin>
-                                                    <children>
-                                                        <HBox prefHeight="60.0" prefWidth="335.0">
-                                                            <children>
-                                                                <Label fx:id="nomProd" prefHeight="48.0" prefWidth="276.0" textFill="WHITE">
-                                                                    <font>
-                                                                        <Font name="Cambria" size="36.0" />
-                                                                    </font>
-                                                                </Label>
-                                                                <Label fx:id="PrixProd" prefHeight="57.0" prefWidth="171.0" textFill="WHITE">
-                                                                    <font>
-                                                                        <Font name="Cambria" size="36.0" />
-                                                                    </font>
-                                                                </Label>
-                                                            </children>
-                                                            <VBox.margin>
-                                                                <Insets left="20.0" top="30.0" />
-                                                            </VBox.margin>
-                                                        </HBox>
-                                                        <ImageView fx:id="photoProd" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
-                                                            <image>
-                                                                <Image url="@../resources/ben-affleck.png" />
-                                                            </image>
-                                                            <VBox.margin>
-                                                                <Insets top="20.0" />
-                                                            </VBox.margin>
-                                                        </ImageView>
-                                                        <Label fx:id="description" prefHeight="66.0" prefWidth="434.0">
-                                                            <VBox.margin>
-                                                                <Insets bottom="20.0" left="40.0" right="40.0" top="40.0" />
-                                                            </VBox.margin>
-                                                        </Label>
-                                                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                                                            <VBox.margin>
-                                                                <Insets top="20.0" />
-                                                            </VBox.margin>
-                                                        </HBox>
-                                                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0" />
-                                                        <Button fx:id="addCard" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../css/styless.css" text="Ajouter au panier" textFill="#828282">
-                                                            <VBox.margin>
-                                                                <Insets bottom="20.0" top="30.0" />
-                                                            </VBox.margin>
-                                                            <font>
-                                                                <Font name="System Bold" size="18.0" />
-                                                            </font>
-                                                        </Button>
-                                                    </children>
-                                                    <styleClass>
-                                                        <String fx:value="chosen-fruit-card" />
-                                                        <String fx:value="shadow" />
-                                                    </styleClass>
-                                                    <opaqueInsets>
-                                                        <Insets top="5.0" />
-                                                    </opaqueInsets>
-                                                </VBox>
-                                            </children>
-                                            <padding>
-                                                <Insets bottom="50.0" left="100.0" right="100.0" top="50.0" />
-                                            </padding>
-                                        </VBox>
-                                    </children>
-                                    <VBox.margin>
-                                        <Insets left="20.0" right="20.0" top="10.0" />
-                                    </VBox.margin>
-                                </HBox>
-                            </children>
-                        </VBox>
-                    </center>
-                </BorderPane>
-            </children>
-        </Pane>
+                  <VBox fx:id="chosenFruitCard" alignment="CENTER" layoutX="281.0" layoutY="56.0" prefHeight="535.0" prefWidth="650.0" stylesheets="@../css/styless.css">
+                      <children>
+                          <HBox alignment="CENTER" prefHeight="60.0" prefWidth="335.0">
+                              <children>
+                                  <Label fx:id="nomProd" prefHeight="48.0" prefWidth="276.0" text="Nom du produit" textFill="WHITE">
+                                      <font>
+                                          <Font name="Cambria" size="36.0" />
+                                      </font>
+                                  </Label>
+                                  <Label fx:id="PrixProd" prefHeight="57.0" prefWidth="171.0" text="40Dt" textAlignment="RIGHT" textFill="WHITE">
+                                      <font>
+                                          <Font name="Cambria" size="36.0" />
+                                      </font>
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                                  </Label>
+                              </children>
+                              <VBox.margin>
+                                  <Insets left="20.0" top="30.0" />
+                              </VBox.margin>
+                          </HBox>
+                          <ImageView fx:id="photoProd" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@../resources/ben-affleck.png" />
+                              </image>
+                              <VBox.margin>
+                                  <Insets top="30.0" />
+                              </VBox.margin>
+                          </ImageView>
+                          <Label fx:id="description" prefHeight="66.0" prefWidth="434.0" text="Description" textFill="WHITE">
+                              <VBox.margin>
+                                  <Insets bottom="20.0" left="40.0" right="40.0" top="40.0" />
+                              </VBox.margin>
+               <font>
+                  <Font size="19.0" />
+               </font>
+                          </Label>
+                          <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                              <VBox.margin>
+                                  <Insets top="20.0" />
+                              </VBox.margin>
+                          </HBox>
+                          <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0" />
+                          <Button fx:id="addCard" mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../css/styless.css" text="Ajouter au panier" textFill="#828282">
+                              <VBox.margin>
+                                  <Insets bottom="20.0" top="30.0" />
+                              </VBox.margin>
+                              <font>
+                                  <Font name="System Bold" size="18.0" />
+                              </font>
+                          </Button>
+                      </children>
+                      <styleClass>
+                          <String fx:value="chosen-fruit-card" />
+                          <String fx:value="shadow" />
+                      </styleClass>
+                      <opaqueInsets>
+                          <Insets top="5.0" />
+                      </opaqueInsets>
+                  </VBox>
     </children>
 </AnchorPane>

@@ -109,5 +109,5 @@
 .dialog-pane .content {
     -fx-font-weight: bold; /* Texte en gras */
     -fx-font-size: 16px; /* Taille de la police */
-    -fx-text-fill: #e7e5e5; /* Couleur du texte */
+    -fx-text-fill: #10165F; /* Couleur du texte */
 }

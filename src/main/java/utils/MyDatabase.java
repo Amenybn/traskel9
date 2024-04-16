@@ -41,7 +41,8 @@ public class MyDatabase {
         List<Categorie> categories = new ArrayList<>();
         String query = "SELECT * FROM categorie_prod";
 
-        try (PreparedStatement statement = connection.prepareStatement(query)) {  // prepareStatement un objet utilisé pour préparer une instruction SQL
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            // prepareStatement un objet utilisé pour préparer une instruction SQL
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {

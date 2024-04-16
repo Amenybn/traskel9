@@ -1,16 +1,12 @@
 package Controllers;
 
 
-import entities.Categorie;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import services.ServiceCategory;
 import utils.MyDatabase;
 
 import java.io.File;
@@ -22,10 +18,9 @@ import java.nio.file.StandardCopyOption;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.UUID;
 
-import static services.ServiceCategory.chargerCategories;
+import static services.ServiceCategorie.chargerCategories;
 
 public class ControllerAjoutProd {
     private File selectedFile;

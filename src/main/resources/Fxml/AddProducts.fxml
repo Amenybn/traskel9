@@ -93,6 +93,7 @@
             </children>
         </VBox>
 
+
               <!-- Main Content -->
         <Pane layoutX="262.0" layoutY="138.4" prefHeight="511.0" prefWidth="829.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="138.0">
             <children>

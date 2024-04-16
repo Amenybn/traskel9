@@ -14,14 +14,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import services.DetailsProdController;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static services.ServiceCategory.chargerCategories;
+import static services.ServiceCategorie.chargerCategories;
 public class ProductController {
     private static final String url = "jdbc:mysql://localhost:3306/traskel";
     private static final String username = "root";
@@ -50,8 +50,8 @@ public class ProductController {
     private Node createProductNode(Produit produit) {
 
         VBox produitBox = new VBox();
-        produitBox.setSpacing(20); // Augmenter l'espace entre les boîtes
-        produitBox.setPadding(new Insets(20, 20, 20, 20));
+        produitBox.setSpacing(10); // Augmenter l'espace entre les boîtes
+        produitBox.setPadding(new Insets(10, 10, 10, 10));
         // Ajouter une image du produit
         ImageView imageView = new ImageView(new Image(new File(produit.getPhoto_prod()).toURI().toString()));
         imageView.setFitWidth(150);
@@ -59,8 +59,10 @@ public class ProductController {
         // Ajouter le nom du produit
         Label nameLabel = new Label(produit.getNom_prod());
         nameLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
-        Label priceLabel = new Label(produit.getPrix_prod() + "€");
+
+        Label priceLabel = new Label(produit.getPrix_prod() + "DT");
         priceLabel.setStyle("-fx-text-fill: white;");
+
         Label descriptionLabel = new Label(produit.getDescrp_prod());
         descriptionLabel.setWrapText(true); // Pour que la description soit sur une seule ligne
         descriptionLabel.setStyle("-fx-text-fill: white;");
@@ -156,9 +158,11 @@ public class ProductController {
     }
 
     private List<Produit> loadAllProductsFromDatabase() {
+
         return loadProductsFromDatabase(null);
     }
 
+   //in comboBox
     @FXML
     void handleCategorySelection(ActionEvent event) {
         String selectedCategory = categoryComboBox.getSelectionModel().getSelectedItem();
@@ -168,6 +172,11 @@ public class ProductController {
             loadProducts(selectedCategory);
         }
     }
+
+
+
+
+
 
     @FXML
     void handleSearch(ActionEvent event) {
@@ -187,11 +196,9 @@ public class ProductController {
         int columnCount = 3;
         int rowCount = 0;
 
-        // Charger les produits depuis la base de données ou tout autre source de données
         List<Produit> produits = searchProductsFromDatabase(searchTerm, category);
 
         for (Produit produit : produits) {
-            // Créer un élément d'affichage pour chaque produit (par exemple, un VBox avec une image, un nom et un prix)
             Node produitNode = createProductNode(produit);
 
             // Ajouter l'élément dans la grille
@@ -209,16 +216,12 @@ public class ProductController {
         } else {
             query = "SELECT * FROM produit WHERE nom_prod LIKE ? AND type_prod = ?";
         }
-
         try (Connection conn = DriverManager.getConnection(url, username, password);
              PreparedStatement statement = conn.prepareStatement(query)) {
-
             statement.setString(1, "%" + searchTerm + "%");
-
             if (category != null && !category.isEmpty()) { // Vérifie si une catégorie est sélectionnée
                 statement.setString(2, category);
             }
-
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     Produit produit = new Produit();
@@ -234,7 +237,6 @@ public class ProductController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return produits;
     }
 }

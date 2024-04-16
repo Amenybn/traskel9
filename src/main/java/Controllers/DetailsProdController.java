@@ -1,4 +1,4 @@
-package services;
+package Controllers;
 
 import entities.Produit;
 import javafx.fxml.FXML;
@@ -21,18 +21,14 @@ public class DetailsProdController {
     private ImageView photoProd;
 
     @FXML
-    private Label description; // Remplacement du TextArea par un Label
+    private Label description;
 
-    @FXML
-    private VBox chosenFruitCard;
 
     public void initData(Produit produit) {
         // Afficher les détails du produit
         nomProd.setText(produit.getNom_prod());
-        PrixProd.setText(produit.getPrix_prod() + "€");
+        PrixProd.setText(produit.getPrix_prod() + "DT");
         description.setText(produit.getDescrp_prod());
-
-        // Charger et afficher l'image du produit
         String imagePath = produit.getPhoto_prod();
         Image image = new Image(new File(imagePath).toURI().toString());
         photoProd.setImage(image);
