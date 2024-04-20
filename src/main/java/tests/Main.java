@@ -12,7 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Charger le fichier FXML
-        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/DashAddCategories.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/DashCategories.fxml"));
 
         // Créer une nouvelle scène avec le contenu chargé depuis le fichier FXML
         Scene scene = new Scene(root, 640, 480);

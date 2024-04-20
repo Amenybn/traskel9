@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -10,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1087.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.DetailsProdController">
     <children>
                   <VBox fx:id="chosenFruitCard" alignment="CENTER" layoutX="281.0" layoutY="56.0" prefHeight="535.0" prefWidth="650.0" stylesheets="@../css/styless.css">
@@ -35,7 +33,7 @@
                                   <Insets left="20.0" top="30.0" />
                               </VBox.margin>
                           </HBox>
-                          <ImageView fx:id="photoProd" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                          <ImageView fx:id="photoProd" fitHeight="170.0" fitWidth="286.0" pickOnBounds="true" preserveRatio="true">
                               <image>
                                   <Image url="@../resources/ben-affleck.png" />
                               </image>
