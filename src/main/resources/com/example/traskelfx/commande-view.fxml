@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.traskelfx.CommandeController"
-            fx:id="borderPane"
-            stylesheets="@style.css">
-    <top>
-        <Button text="Add Commande" onAction="#addCommande"/>
-    </top>
-
-    <center>
-        <TableView fx:id="tableView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TableView fx:id="tableView" layoutX="50.0" layoutY="50.0" prefHeight="300.0" prefWidth="500.0">
             <columns>
-                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
-                <TableColumn fx:id="adresseColumn" text="Adresse" prefWidth="150"/>
-                <TableColumn fx:id="statutColumn" text="Statut" prefWidth="100"/>
-                <TableColumn fx:id="prixColumn" text="Prix" prefWidth="75"/>
-                <TableColumn fx:id="delaiColumn" text="Délai" prefWidth="100"/>
+                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="adresseColumn" prefWidth="150.0" text="Adresse" />
+                <TableColumn fx:id="statutColumn" prefWidth="75.0" text="Statut" />
+                <TableColumn fx:id="prixColumn" prefWidth="75.0" text="Prix" />
+                <TableColumn fx:id="delaiColumn" prefWidth="150.0" text="Delai" />
             </columns>
         </TableView>
-    </center>
-
-</BorderPane>
+        <Button layoutX="50.0" layoutY="370.0" mnemonicParsing="false" onAction="#addCommande" text="Add Commande" />
+    </children>
+</AnchorPane>

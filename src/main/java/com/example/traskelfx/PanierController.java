@@ -29,7 +29,6 @@ public class PanierController {
     private static final String password = "";
 
     public void initialize() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nbrProdsColumn.setCellValueFactory(new PropertyValueFactory<>("nbrProds"));
         totalPrixColumn.setCellValueFactory(new PropertyValueFactory<>("totalPrix"));
 
