@@ -204,6 +204,8 @@ public class ServiceCategorie {
                 });
             }
 
+
+
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
@@ -226,6 +228,32 @@ public class ServiceCategorie {
         }
         return nomCategories;
     }
+
+
+    @FXML
+    void addCategory(ActionEvent event) {
+        try {
+            // Charger la même scène à partir du fichier FXML actuel
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/DashAddCategories.fxml"));
+            Parent root = loader.load();
+
+            // Récupérer la scène actuelle à partir de l'événement
+            Node source = (Node) event.getSource();
+            Scene scene = source.getScene();
+
+            // Mettre la nouvelle racine (root) dans la scène actuelle
+            scene.setRoot(root);
+
+            // Récupérer la fenêtre (Stage) à partir de la scène
+            Stage stage = (Stage) scene.getWindow();
+
+            // Afficher la scène mise à jour
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 

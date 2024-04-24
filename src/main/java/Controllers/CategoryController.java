@@ -2,8 +2,13 @@ package Controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import utils.MyDatabase;
 import java.io.IOException;
 import java.sql.*;
@@ -56,18 +61,23 @@ public class CategoryController {
                 st.setString(1, categorie);
                 st.executeUpdate();
 
-
                 Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                 successAlert.setTitle("Succès");
                 successAlert.setHeaderText(null);
                 successAlert.setContentText("Votre catégorie a été ajoutée avec succès.");
                 successAlert.showAndWait();
+                annuler();
             } catch (SQLException e) {
                 e.printStackTrace();
 
                 errorLabel.setText("Une erreur s'est produite lors de l'ajout de la catégorie.");
             }
         }
+    }
+    @FXML
+    private void annuler() {
+        // Clear all fields and error labels
+        categorie_prod.clear();
     }
 
     private boolean validateForm() {
@@ -95,6 +105,30 @@ public class CategoryController {
         }
 
     }
+
+
+    @FXML
+    void afficherListeCategories(ActionEvent event) {
+        try {
+            // Charger la page DashCategories.fxml
+            Parent root = FXMLLoader.load(getClass().getResource("/FXML/DashCategories.fxml"));
+
+            // Créer un nouveau Stage
+            Stage stage = new Stage();
+            // Définir la scène avec la racine chargée
+            stage.setScene(new Scene(root));
+            // Afficher le nouveau Stage
+            stage.show();
+
+            // Fermer la fenêtre actuelle
+            Node source = (Node) event.getSource();
+            Stage currentStage = (Stage) source.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 
