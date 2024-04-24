@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controllers.ChartController">
+
+        <center>
+                <BarChart fx:id="barChart">
+                        <xAxis>
+                                <CategoryAxis side="BOTTOM" label="Catégorie"/>
+                        </xAxis>
+                        <yAxis>
+                                <NumberAxis side="LEFT" label="Nombre de Produits"/>
+                        </yAxis>
+                </BarChart>
+        </center>
+
+</BorderPane>
