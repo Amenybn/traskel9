@@ -1,14 +1,19 @@
 package Controllers;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.BarChart;
+import javafx.scene.image.WritableImage;
+import javafx.stage.FileChooser;
 import services.ServiceCategorie;
+import javax.imageio.ImageIO;
+import javafx.embed.swing.SwingFXUtils;
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 public class ChartController {
 
     @FXML
@@ -87,4 +92,30 @@ public class ChartController {
 
         return category;
     }
+
+
+    @FXML
+    private void downloadChart() {
+        // Créer un sélecteur de fichier pour choisir l'emplacement de sauvegarde
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Enregistrer le graphique");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Fichiers PNG", "*.png")
+        );
+        File file = fileChooser.showSaveDialog(barChart.getScene().getWindow());
+
+        if (file != null) {
+            // Capturer l'image du graphique
+            WritableImage image = barChart.snapshot(new SnapshotParameters(), null);
+
+            // Sauvegarder l'image dans le fichier
+            try {
+                ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }

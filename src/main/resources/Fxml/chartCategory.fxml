@@ -4,20 +4,28 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Button?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="Controllers.ChartController">
 
         <center>
-                <BarChart fx:id="barChart">
-                        <xAxis>
-                                <CategoryAxis side="BOTTOM" label="Catégorie"/>
-                        </xAxis>
-                        <yAxis>
-                                <NumberAxis side="LEFT" label="Nombre de Produits"/>
-                        </yAxis>
-                </BarChart>
+                <BorderPane>
+                        <center>
+                                <BarChart fx:id="barChart">
+                                        <xAxis>
+                                                <CategoryAxis side="BOTTOM" label="Catégorie"/>
+                                        </xAxis>
+                                        <yAxis>
+                                                <NumberAxis side="LEFT" label="Nombre de Produits"/>
+                                        </yAxis>
+                                </BarChart>
+                        </center>
+                        <bottom>
+                                <Button text="Télécharger" onAction="#downloadChart"/>
+                        </bottom>
+                </BorderPane>
         </center>
 
 </BorderPane>

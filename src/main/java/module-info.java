@@ -4,6 +4,8 @@ module WorkshopJDBC3A56 {
     requires javafx.controls;
     requires javafx.fxml;
     requires mysql.connector.j;
+    requires java.desktop;
+    requires javafx.swing;
     exports tests;
     opens services;
     exports services;
