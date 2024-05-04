@@ -1,10 +1,13 @@
 package Controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.chart.BarChart;
+import javafx.scene.control.Button;
 import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import services.ServiceCategorie;
 import javax.imageio.ImageIO;
@@ -22,7 +25,10 @@ public class ChartController {
     private static final String username = "root";
     private static final String password = "";
 
-
+    @FXML
+    private Button btnCustomers;
+    @FXML
+    private Pane pnlCustomer;
     @FXML
     public void initialize() {
         loadChartData();
@@ -91,6 +97,13 @@ public class ChartController {
         }
 
         return category;
+    }
+
+    public void handleClicks(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == btnCustomers) {
+            pnlCustomer.setStyle("-fx-background-color : #1620A1");
+            pnlCustomer.toFront();
+        }
     }
 
 
