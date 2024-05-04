@@ -6,6 +6,9 @@ module WorkshopJDBC3A56 {
     requires mysql.connector.j;
     requires java.desktop;
     requires javafx.swing;
+    requires org.jfree.jfreechart;
+    requires org.apache.pdfbox;
+
     exports tests;
     opens services;
     exports services;

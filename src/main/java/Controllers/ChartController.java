@@ -1,34 +1,38 @@
 package Controllers;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
+import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.SnapshotParameters;
-import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.category.DefaultCategoryDataset;
 import services.ServiceCategorie;
-import javax.imageio.ImageIO;
-import javafx.embed.swing.SwingFXUtils;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
+import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+
 public class ChartController {
 
     @FXML
-    private BarChart<String, Number> barChart;
-    private static final String url = "jdbc:mysql://localhost:3306/traskel";
-    private static final String username = "root";
-    private static final String password = "";
-
+    private Pane pnlCustomer;
     @FXML
     private Button btnCustomers;
-    @FXML
-    private Pane pnlCustomer;
+
+
     @FXML
     public void initialize() {
         loadChartData();
@@ -38,8 +42,8 @@ public class ChartController {
         // Récupérer la liste des catégories
         List<String> categories = ServiceCategorie.chargerCategories();
 
-        // Créer un HashMap pour stocker le nombre de produits par catégorie
-        ObservableList<BarChart.Data<String, Number>> chartData = FXCollections.observableArrayList();
+        // Créer un ensemble de données par défaut
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         // Récupérer la liste des produits depuis la base de données
         List<String> products = loadProductsFromDatabase();
@@ -52,15 +56,27 @@ public class ChartController {
                     count++;
                 }
             }
-            chartData.add(new BarChart.Data<>(category, count));
+            dataset.addValue(count, "Produits", category);
         }
 
-        // Créer la série de données pour la charte
-        BarChart.Series<String, Number> series = new BarChart.Series<>(chartData);
+        // Créer le graphique
+        JFreeChart barChart = ChartFactory.createBarChart(
+                "Nombre de produits par catégorie", // Titre du graphique
+                "Catégorie",                        // Axe des X
+                "Nombre de produits",               // Axe des Y
+                dataset);                           // Données
 
-        // Ajouter la série de données à la charte
-        barChart.getData().add(series);
+        ChartPanel chartPanel = new ChartPanel(barChart);
+
+        // Créer un SwingNode pour intégrer le ChartPanel dans JavaFX
+        SwingNode swingNode = new SwingNode();
+        swingNode.setContent(chartPanel);
+
+        // Ajouter le SwingNode au conteneur JavaFX
+        pnlCustomer.getChildren().add(swingNode);
     }
+
+
 
     // Fonction pour charger les produits depuis la base de données
     private List<String> loadProductsFromDatabase() {
@@ -79,12 +95,11 @@ public class ChartController {
     }
 
     // Fonction pour récupérer la catégorie d'un produit
-
     public static String getProductCategory(String productName) {
         String category = null;
         String query = "SELECT type_prod FROM produit WHERE nom_prod = ?";
 
-        try (Connection conn = DriverManager.getConnection(url, username, password);
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/traskel", "root", "");
              PreparedStatement statement = conn.prepareStatement(query)) {
             statement.setString(1, productName);
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -108,27 +123,68 @@ public class ChartController {
 
 
     @FXML
-    private void downloadChart() {
-        // Créer un sélecteur de fichier pour choisir l'emplacement de sauvegarde
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Enregistrer le graphique");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Fichiers PNG", "*.png")
-        );
-        File file = fileChooser.showSaveDialog(barChart.getScene().getWindow());
+    private void downloadChart(ActionEvent event) {
+        // Créer un document PDF
+        try (PDDocument document = new PDDocument()) {
+            PDPage page = new PDPage();
+            document.addPage(page);
 
-        if (file != null) {
-            // Capturer l'image du graphique
-            WritableImage image = barChart.snapshot(new SnapshotParameters(), null);
+            // Créer un ensemble de données par défaut
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-            // Sauvegarder l'image dans le fichier
-            try {
-                ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
-            } catch (IOException e) {
-                e.printStackTrace();
+            // Récupérer la liste des catégories
+            List<String> categories = ServiceCategorie.chargerCategories();
+
+            // Récupérer la liste des produits depuis la base de données
+            List<String> products = loadProductsFromDatabase();
+
+            // Compter le nombre de produits dans chaque catégorie
+            for (String category : categories) {
+                int count = 0;
+                for (String product : products) {
+                    if (getProductCategory(product).equals(category)) {
+                        count++;
+                    }
+                }
+                dataset.addValue(count, "Produits", category);
             }
+
+            // Créer le graphique
+            JFreeChart barChart = ChartFactory.createBarChart(
+                    "Nombre de produits par catégorie", // Titre du graphique
+                    "Catégorie",                        // Axe des X
+                    "Nombre de produits",               // Axe des Y
+                    dataset);                           // Données
+
+            // Capturer l'image du graphique
+            BufferedImage chartImage = barChart.createBufferedImage(800, 600);
+
+            // Convertir l'image du graphique en PDImageXObject
+            PDImageXObject pdImage = LosslessFactory.createFromImage(document, chartImage);
+
+            // Ajouter l'image du graphique à la page PDF
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                contentStream.drawImage(pdImage, 100, 500, pdImage.getWidth() / 2, pdImage.getHeight() / 2);
+            }
+
+            // Afficher une boîte de dialogue pour permettre à l'utilisateur de choisir l'emplacement de sauvegarde du fichier
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Enregistrer le graphique");
+
+            // Définir le filtre pour ne montrer que les fichiers PDF
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Fichiers PDF (*.pdf)", "*.pdf");
+            fileChooser.getExtensionFilters().add(extFilter);
+
+            // Afficher la boîte de dialogue et obtenir le fichier sélectionné
+            File file = fileChooser.showSaveDialog(null);
+
+            if (file != null) {
+                // Enregistrer le document PDF dans le fichier sélectionné par l'utilisateur
+                document.save(file);
+                System.out.println("Le graphique a été enregistré avec succès dans : " + file.getAbsolutePath());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
-
 }
