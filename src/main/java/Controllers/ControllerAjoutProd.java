@@ -79,7 +79,10 @@ public class ControllerAjoutProd {
             return;
         }
 
-        String insert = "INSERT INTO produit (nom_prod, descrp_prod, prix_prod, photo_prod, type_prod) VALUES (?, ?, ?, ?, ?)";
+        // Obtention de l'ID de l'utilisateur courant
+        int userId = getCurrentUserId();
+
+        String insert = "INSERT INTO produit (nom_prod, descrp_prod, prix_prod, photo_prod, type_prod, id_user_id) VALUES (?, ?, ?, ?, ?, ?)";
         Connection con = MyDatabase.getInstance().getConnection();
 
         chargerCategories();
@@ -100,6 +103,7 @@ public class ControllerAjoutProd {
                 st.setString(3, prix.getText());
                 st.setString(4, photoProd);
                 st.setString(5, categorie);
+                st.setInt(6, userId); // Ajouter l'ID de l'utilisateur courant
                 st.executeUpdate();
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -176,6 +180,11 @@ public class ControllerAjoutProd {
         }
 
         return isValid;
+    }
+
+    private int getCurrentUserId() {
+        // Implémentez le code pour obtenir l'ID de l'utilisateur actuel
+        return 1; // Par exemple, retourne toujours l'ID 1 pour le moment
     }
 
 

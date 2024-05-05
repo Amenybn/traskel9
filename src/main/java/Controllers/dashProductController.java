@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import services.dashProductService;
 
@@ -21,7 +22,10 @@ public class dashProductController {
 
     @FXML
     public GridPane gridPane;
-
+    @FXML
+    private Pane pnlCustomer;
+    @FXML
+    private Button btnCustomers;
     @FXML
     public void initialize() {
         afficherr(new ActionEvent());
@@ -78,6 +82,11 @@ public class dashProductController {
     public void afficherr(ActionEvent event) {
         afficher();
     }
-
+    public void handleClicks(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == btnCustomers) {
+            pnlCustomer.setStyle("-fx-background-color : #1620A1");
+            pnlCustomer.toFront();
+        }
+    }
 
 }
