@@ -159,7 +159,7 @@ public class userProductService {
 
         Optional<ButtonType> result = confirmationDialog.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            try (Connection conn = MyDatabase.getInstance().getConnection()) {
+            try (Connection conn = DriverManager.getConnection(url, username, password)) {
                 String sql = "DELETE FROM produit WHERE id=?";
                 try (PreparedStatement statement = conn.prepareStatement(sql)) {
                     statement.setInt(1, produit.getId());
@@ -171,7 +171,6 @@ public class userProductService {
             controller.afficher(); // Màj l'affichage
         }
     }
-
     private String modifierPhoto() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(

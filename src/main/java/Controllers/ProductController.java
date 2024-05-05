@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import services.CategorieService;
@@ -27,6 +28,7 @@ public class ProductController {
     private static final String url = "jdbc:mysql://localhost:3306/traskel";
     private static final String username = "root";
     private static final String password = "";
+
     @FXML
     private TextField searchTextField;
     @FXML
@@ -45,6 +47,8 @@ public class ProductController {
         categories.add(0, "Tous les catégories");
         categoryComboBox.setItems(FXCollections.observableArrayList(categories));
         loadProducts(null);
+
+        categoryComboBox.setOnAction(this::handleCategorySelection);
     }
 
     private Node createProductNode(Produit produit) {
@@ -66,7 +70,31 @@ public class ProductController {
         descriptionLabel.setWrapText(true);
         descriptionLabel.setStyle("-fx-text-fill: white;");
 
-        produitBox.getChildren().addAll(imageView, nameLabel, priceLabel, descriptionLabel);
+        Button favoriteButton = new Button();
+        ImageView favoriteIcon = new ImageView(new Image(getClass().getResourceAsStream("/resources/transparent.png")));
+        favoriteButton.setGraphic(favoriteIcon);
+
+        if (isProductInFavorites(getCurrentUserId(), produit.getId())) {
+            favoriteIcon.setImage(new Image(getClass().getResourceAsStream("/resources/red.png")));
+        }
+
+        favoriteButton.setOnAction(event -> {
+            int userId = getCurrentUserId();
+            if (isProductInFavorites(userId, produit.getId())) {
+                removeProductFromFavorites(userId, produit.getId());
+                favoriteIcon.setImage(new Image(getClass().getResourceAsStream("/resources/transparent.png")));
+            } else {
+                saveProductAsFavorite(userId, produit.getId());
+                favoriteIcon.setImage(new Image(getClass().getResourceAsStream("/resources/red.png")));
+            }
+        });
+
+        favoriteIcon.setFitWidth(24);
+        favoriteIcon.setFitHeight(24);
+        HBox imageAndFavoriteBox = new HBox(imageView, favoriteButton);
+
+        imageAndFavoriteBox.setStyle("-fx-alignment: CENTER_RIGHT;");
+        produitBox.getChildren().addAll(imageView, nameLabel, priceLabel, descriptionLabel, favoriteButton);
         produitBox.setStyle("-fx-background-color: #393351; -fx-background-radius: 10px; -fx-padding: 20px;");
 
         produitBox.setOnMouseClicked(event -> {
@@ -77,6 +105,49 @@ public class ProductController {
             }
         });
         return produitBox;
+    }
+
+    private void saveProductAsFavorite(int userId, int productId) {
+        String query = "INSERT INTO favoris (user_id, product_id) VALUES (?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setInt(1, userId);
+            statement.setInt(2, productId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void removeProductFromFavorites(int userId, int productId) {
+        String query = "DELETE FROM favoris WHERE user_id = ? AND product_id = ?";
+        try (Connection conn = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setInt(1, userId);
+            statement.setInt(2, productId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean isProductInFavorites(int userId, int productId) {
+        String query = "SELECT COUNT(*) FROM favoris WHERE user_id = ? AND product_id = ?";
+        try (Connection conn = DriverManager.getConnection(url, username, password);
+             PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setInt(1, userId);
+            statement.setInt(2, productId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     private void showProductDetails(Produit produit) throws IOException {
@@ -96,7 +167,6 @@ public class ProductController {
         String searchTerm = searchTextField.getText();
         String selectedCategory = categoryComboBox.getSelectionModel().getSelectedItem();
 
-
         if (selectedCategory == null || selectedCategory.isEmpty() || "Tous les catégories".equals(selectedCategory)) {
             searchProducts(searchTerm, null);
         } else {
@@ -113,8 +183,6 @@ public class ProductController {
 
         for (Produit produit : produits) {
             Node produitNode = createProductNode(produit);
-
-            // Ajouter l'élément dans la grille
             gridPane.add(produitNode, rowCount % columnCount, rowCount / columnCount);
             rowCount++;
         }
@@ -129,10 +197,11 @@ public class ProductController {
         } else {
             query = "SELECT * FROM produit WHERE nom_prod LIKE ? AND type_prod = ?";
         }
+
         try (Connection conn = DriverManager.getConnection(url, username, password);
              PreparedStatement statement = conn.prepareStatement(query)) {
             statement.setString(1, "%" + searchTerm + "%");
-            if (category != null && !category.isEmpty()) { // Vérifie si une catégorie est sélectionnée
+            if (category != null && !category.isEmpty()) {
                 statement.setString(2, category);
             }
             try (ResultSet resultSet = statement.executeQuery()) {
@@ -189,9 +258,20 @@ public class ProductController {
         return produits;
     }
 
+
+
+
+
+
     private void loadProducts(String category) {
         gridPane.getChildren().clear();
-        produits = loadProductsFromDatabase(category);
+        int columnCount = 3; // Nombre de colonnes dans la grille
+        int rowCount = 0; // Compteur de lignes
+        if ("Tous les catégories".equals(category)) {
+            produits = loadAllProductsFromDatabase();
+        } else {
+            produits = loadProductsFromDatabase(category);
+        }
         int startIndex = (currentPage - 1) * itemsPerPage;
         int endIndex = Math.min(startIndex + itemsPerPage, produits.size());
 
@@ -202,6 +282,10 @@ public class ProductController {
         }
     }
 
+    private List<Produit> loadAllProductsFromDatabase() {
+
+        return loadProductsFromDatabase(null);
+    }
     @FXML
     void handleCategorySelection(ActionEvent event) {
         String selectedCategory = categoryComboBox.getSelectionModel().getSelectedItem();
@@ -227,5 +311,10 @@ public class ProductController {
             currentPage++;
             loadProducts(categoryComboBox.getValue());
         }
+    }
+
+    private int getCurrentUserId() {
+        // Implémentez le code pour obtenir l'ID de l'utilisateur actuel
+        return 1; // Par exemple, retourne toujours l'ID 1 pour le moment
     }
 }

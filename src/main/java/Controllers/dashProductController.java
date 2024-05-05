@@ -29,41 +29,36 @@ public class dashProductController {
 
     public Node createProductNode(Produit produit) {
         VBox produitBox = new VBox();
-        produitBox.setSpacing(10); // Augmenter l'espace entre les boîtes
-        produitBox.setPadding(new Insets(10, 10, 10, 10)); // Ajouter de la marge autour du VBox
-        // Ajouter une image du produit
+        produitBox.setSpacing(10);
+        produitBox.setPadding(new Insets(10, 10, 10, 10));
+
         ImageView imageView = new ImageView(new Image(new File(produit.getPhoto_prod()).toURI().toString()));
         imageView.setFitWidth(150);
         imageView.setFitHeight(150);
-        // Ajouter le nom du produit
+
         Label nameLabel = new Label(produit.getNom_prod());
         nameLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
-        // Ajouter le prix du produit
+
         Label priceLabel = new Label(produit.getPrix_prod() + "DT");
         priceLabel.setStyle("-fx-text-fill: white;");
-        // Ajouter la description du produit
+
         Label descriptionLabel = new Label(produit.getDescrp_prod());
-        descriptionLabel.setWrapText(true); // Pour que la description soit sur une seule ligne
+        descriptionLabel.setWrapText(true);
         descriptionLabel.setStyle("-fx-text-fill: white;");
-        // Créer des boutons "Supprimer" et "Modifier"
+
+        // Créer un bouton "Supprimer"
         Button deleteButton = new Button("Supprimer");
         deleteButton.setOnAction(event -> deleteProduit(produit));
-        Button editButton = new Button("Modifier");
-        editButton.setOnAction(event -> updateProduit(produit));
-        // Créer une boîte horizontale pour les boutons
+
         HBox buttonsBox = new HBox(10);
-        buttonsBox.getChildren().addAll(deleteButton, editButton);
-        // Ajouter les éléments dans le VBox
+        buttonsBox.getChildren().add(deleteButton);
+
         produitBox.getChildren().addAll(imageView, nameLabel, priceLabel, descriptionLabel, buttonsBox);
-        // Définir le style du VBox
-        produitBox.setStyle("-fx-background-color: #393351; -fx-background-radius: 10px; -fx-padding: 20px;"); // Pour définir la couleur de fond en blanc et arrondir les coins du VBox
-        // Retourner le VBox contenant les détails du produit
+        produitBox.setStyle("-fx-background-color: #393351; -fx-background-radius: 10px; -fx-padding: 20px;");
+
         return produitBox;
     }
 
-    public void updateProduit(Produit produit) {
-        new dashProductService(this).updateProduit(produit);
-    }
 
     public void deleteProduit(Produit produit) {
         new dashProductService(this).deleteProduit(produit);
