@@ -7,17 +7,21 @@ public class Produit {
     private String photo_prod;
     private double prix_prod;
     private String type_prod;
+    private int id_user_id; // Modifier le nom de l'attribut
+    private int panier_id;
 
     public Produit() {
     }
 
-    public Produit(int id, String nom_prod, String descrp_prod, String photo_prod, double prix_prod, String type_prod) {
+    public Produit(int id, String nom_prod, String descrp_prod, String photo_prod, double prix_prod, String type_prod, int id_user_id, int panier_id) {
         this.id = id;
         this.nom_prod = nom_prod;
         this.descrp_prod = descrp_prod;
         this.photo_prod = photo_prod;
         this.prix_prod = prix_prod;
         this.type_prod = type_prod;
+        this.id_user_id = id_user_id; // Modifier le nom de l'attribut
+        this.panier_id = panier_id;
     }
 
     public int getId() {
@@ -64,10 +68,24 @@ public class Produit {
         return type_prod;
     }
 
-
-
     public void setType_prod(String type_prod) {
         this.type_prod = type_prod;
+    }
+
+    public int getId_user_id() { // Modifier le nom de l'accesseur
+        return id_user_id;
+    }
+
+    public void setId_user_id(int id_user_id) { // Modifier le nom de l'accesseur
+        this.id_user_id = id_user_id;
+    }
+
+    public int getPanier_id() {
+        return panier_id;
+    }
+
+    public void setPanier_id(int panier_id) {
+        this.panier_id = panier_id;
     }
 
     @Override
@@ -79,6 +97,8 @@ public class Produit {
                 ", photo_prod='" + photo_prod + '\'' +
                 ", prix_prod=" + prix_prod +
                 ", type_prod='" + type_prod + '\'' +
+                ", id_user_id=" + id_user_id + // Modifier le nom de l'attribut
+                ", panier_id=" + panier_id +
                 '}';
     }
 }

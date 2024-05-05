@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import services.ServiceCategorie;
+import services.CategorieService;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,7 +41,7 @@ public class ProductController {
 
     @FXML
     public void initialize() {
-        List<String> categories = ServiceCategorie.chargerCategories();
+        List<String> categories = CategorieService.chargerCategories();
         categories.add(0, "Tous les catégories");
         categoryComboBox.setItems(FXCollections.observableArrayList(categories));
         loadProducts(null);

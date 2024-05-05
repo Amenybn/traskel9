@@ -10,7 +10,7 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.category.DefaultCategoryDataset;
-import services.ServiceCategorie;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +24,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
+import services.CategorieService;
 
 public class ChartController {
 
@@ -40,7 +41,7 @@ public class ChartController {
 
     private void loadChartData() {
         // Récupérer la liste des catégories
-        List<String> categories = ServiceCategorie.chargerCategories();
+        List<String> categories = CategorieService.chargerCategories();
 
         // Créer un ensemble de données par défaut
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
@@ -133,7 +134,7 @@ public class ChartController {
             DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
             // Récupérer la liste des catégories
-            List<String> categories = ServiceCategorie.chargerCategories();
+            List<String> categories = CategorieService.chargerCategories();
 
             // Récupérer la liste des produits depuis la base de données
             List<String> products = loadProductsFromDatabase();

@@ -1,6 +1,8 @@
 package services;
 
 import entities.Categorie;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import utils.MyDatabase;
 
@@ -114,5 +116,15 @@ public class CategorieService {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+
+    public static ObservableList<String> chargerCategories() {
+        List<Categorie> categories = MyDatabase.getInstance().getAllCategories();
+        ObservableList<String> nomCategories = FXCollections.observableArrayList();
+        for (Categorie categorie : categories) {
+            nomCategories.add(categorie.getCategorie_prod());
+        }
+        return nomCategories;
     }
 }

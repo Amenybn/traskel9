@@ -19,7 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
 
-import static services.ServiceCategorie.chargerCategories;
+import static services.CategorieService.chargerCategories;
 
 public class ControllerAjoutProd {
     private File selectedFile;

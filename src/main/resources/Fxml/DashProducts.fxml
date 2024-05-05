@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="1087.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.dashProductController">
+    <children>
+
+        <Pane layoutX="262.0" prefHeight="649.0" prefWidth="631.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="262.0" AnchorPane.rightAnchor="-4.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Pane layoutX="76.0" layoutY="106.0">
+
+                    <children>
+                        <AnchorPane layoutX="-14.0" layoutY="8.0" prefHeight="519.0" prefWidth="562.0" AnchorPane.bottomAnchor="-8.0" AnchorPane.leftAnchor="-14.0" AnchorPane.topAnchor="8.0">
+                            <GridPane fx:id="gridPane" hgap="70" layoutX="-28.0" layoutY="110.0" prefHeight="200.0" prefWidth="821.0" vgap="10">
+                            </GridPane>
+                        </AnchorPane>
+                    </children>
+
+                </Pane>
+            </children>
+        </Pane>
+        <Pane layoutX="-352.0" layoutY="50.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;" />
+        <HBox alignment="CENTER_LEFT" prefHeight="107.0" prefWidth="1277.0" style="-fx-background-color: #1F1D2B;">
+            <children>
+                <ImageView fitHeight="50.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../resources/icons8_Home_32px.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="10.0" right="5.0" />
+                    </HBox.margin>
+                </ImageView>
+                <Label graphicTextGap="7.0" text="TRASKEL" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="25.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="7.0" />
+                    </HBox.margin>
+                </Label>
+                <Label graphicTextGap="7.0" text="Home" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="22.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="200.0" />
+                    </HBox.margin>
+                </Label>
+                <Label graphicTextGap="7.0" text="Shop" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="22.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="30.0" />
+                    </HBox.margin>
+                </Label>
+                <Label graphicTextGap="7.0" text="Services" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="22.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="30.0" />
+                    </HBox.margin>
+                </Label>
+                <Label graphicTextGap="7.0" text="Contact Us" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="22.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="30.0" />
+                    </HBox.margin>
+                </Label>
+                <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../resources/icons8_Person_32px.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="150.0" />
+                    </HBox.margin>
+                </ImageView>
+                <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../resources/icons8_Person_32px.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+                </ImageView>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

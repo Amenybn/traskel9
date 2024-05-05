@@ -12,12 +12,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import services.userProductService;
+import services.dashProductService;
 
 import java.io.File;
 import java.util.List;
 
-public class userProductController {
+public class dashProductController {
 
     @FXML
     public GridPane gridPane;
@@ -62,34 +62,27 @@ public class userProductController {
     }
 
     public void updateProduit(Produit produit) {
-        new userProductService(this).updateProduit(produit);
+        new dashProductService(this).updateProduit(produit);
     }
 
     public void deleteProduit(Produit produit) {
-        new userProductService(this).deleteProduit(produit);
+        new dashProductService(this).deleteProduit(produit);
     }
 
     public void afficher() {
         gridPane.getChildren().clear();
         int columnCount = 3;
         int rowCount = 0;
-        // Récupérer l'ID de l'utilisateur courant (vous devez définir cette valeur)
-        int userId = getUserId(); // Remplacez getUserId() par la méthode pour obtenir l'ID de l'utilisateur courant
-        List<Produit> produits = new userProductService(this).loadProductsFromDatabase(userId);
+        List<Produit> produits = new dashProductService(this).loadProductsFromDatabase();
         for (Produit produit : produits) {
             Node produitNode = createProductNode(produit);
             gridPane.add(produitNode, rowCount % columnCount, rowCount / columnCount);
             rowCount++;
         }
     }
-
-    // Méthode fictive pour récupérer l'ID de l'utilisateur courant
-    private int getUserId() {
-        // Implémentez cette méthode pour récupérer l'ID de l'utilisateur courant
-        return 1; // Pour l'exemple, retourne toujours l'ID 1
-    }
-
-    public void afficherr(javafx.event.ActionEvent event) {
+    public void afficherr(ActionEvent event) {
         afficher();
     }
+
+
 }

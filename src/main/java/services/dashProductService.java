@@ -1,12 +1,11 @@
 package services;
 
-import Controllers.userProductController;
+import Controllers.dashProductController;
 import entities.Categorie;
 import entities.Produit;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,13 +25,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class userProductService {
+public class dashProductService {
     private static final String url = "jdbc:mysql://localhost:3306/traskel";
     private static final String username = "root";
     private static final String password = "";
-    private userProductController controller;
+    private dashProductController controller;
 
-    public userProductService(userProductController controller) {
+    public dashProductService(dashProductController controller) {
         this.controller = controller;
     }
 
@@ -122,27 +121,24 @@ public class userProductService {
     }
 
 
-    public List<Produit> loadProductsFromDatabase(int userId) {
+    public List<Produit> loadProductsFromDatabase() {
         List<Produit> produits = new ArrayList<>();
 
-        String query = "SELECT * FROM produit WHERE id_user_id = ?"; // Modifier la requête pour sélectionner uniquement les produits de l'utilisateur courant
+        String query = "SELECT * FROM produit";
 
         try (Connection conn = DriverManager.getConnection(url, username, password);
-             PreparedStatement statement = conn.prepareStatement(query)) {
-            statement.setInt(1, userId); // Passer l'ID de l'utilisateur en tant que paramètre à la requête
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    Produit produit = new Produit();
-                    produit.setId(resultSet.getInt("id"));
-                    produit.setNom_prod(resultSet.getString("nom_prod"));
-                    produit.setDescrp_prod(resultSet.getString("descrp_prod"));
-                    produit.setPhoto_prod(resultSet.getString("photo_prod"));
-                    produit.setPrix_prod(resultSet.getDouble("prix_prod"));
-                    produit.setType_prod(resultSet.getString("type_prod"));
-                    produit.setId_user_id(resultSet.getInt("id_user_id"));
-                    produit.setPanier_id(resultSet.getInt("panier_id"));
-                    produits.add(produit);
-                }
+             PreparedStatement statement = conn.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            while (resultSet.next()) {
+                Produit produit = new Produit();
+                produit.setId(resultSet.getInt("id"));
+                produit.setNom_prod(resultSet.getString("nom_prod"));
+                produit.setDescrp_prod(resultSet.getString("descrp_prod"));
+                produit.setPhoto_prod(resultSet.getString("photo_prod"));
+                produit.setPrix_prod(resultSet.getDouble("prix_prod"));
+                produit.setType_prod(resultSet.getString("type_prod"));
+                produits.add(produit);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -150,6 +146,7 @@ public class userProductService {
 
         return produits;
     }
+
 
     public void deleteProduit(Produit produit) {
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
