@@ -35,7 +35,7 @@ public class ProductController {
     private ComboBox<String> categoryComboBox;
 
     private List<Produit> produits;
-    private int itemsPerPage = 9;
+    private int itemsPerPage = 6;
     private int currentPage = 1;
     private int columnCount = 3;
 

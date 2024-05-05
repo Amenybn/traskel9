@@ -26,11 +26,7 @@ public class Categorie {
     }
     @Override
     public String toString() {
-        return "Produit{" +
-                "id=" + id +
-                ", categorie_prod='" + categorie_prod + '\'' +
-
-                '}';
+        return categorie_prod ;
     }
 
 

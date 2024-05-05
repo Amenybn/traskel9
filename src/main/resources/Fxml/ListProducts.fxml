@@ -16,6 +16,7 @@
 
 <?import javafx.scene.layout.GridPane?>
 
+<?import javafx.scene.control.ScrollPane?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="1214.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ProductController">
     <children>
         <VBox layoutX="10.0" layoutY="10.0" prefHeight="90.0" prefWidth="1388.0" style="-fx-background-color: #393351;">
@@ -93,13 +94,17 @@
             </children>
         </VBox>
 
-        <Pane layoutX="154.0" layoutY="164.0" prefHeight="519.0" prefWidth="491.0" stylesheets="@../css/styless.css">
+        <Pane layoutX="54.0" layoutY="104.0" prefHeight="570.0" prefWidth="920.0" stylesheets="@../css/styless.css">
             <children>
-                <AnchorPane prefHeight="519.0" prefWidth="562.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <GridPane fx:id="gridPane" hgap="70" layoutX="79.0" layoutY="108.0" prefHeight="200.0" prefWidth="821.0" vgap="10">
-                    </GridPane>
+                <ScrollPane layoutX="124.0" layoutY="144.0" prefHeight="560.0" prefWidth="920.0" stylesheets="@../css/styless.css">
+                    <AnchorPane prefHeight="580.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
 
-                </AnchorPane>
+                            <GridPane fx:id="gridPane" hgap="70" layoutX="79.0" layoutY="108.0" prefHeight="200.0" prefWidth="821.0" vgap="10">
+                                <!-- Contenu de votre GridPane -->
+                            </GridPane>
+
+                    </AnchorPane>
+                </ScrollPane>
             </children>
             <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="400.0" stylesheets="@../css/styless.css" VBox.vgrow="NEVER">
                 <VBox.margin>
@@ -129,7 +134,7 @@
         </ComboBox>
 
         <!-- Pagination -->
-        <HBox alignment="CENTER" layoutX="154.0" layoutY="700.0" prefHeight="50.0" prefWidth="491.0" stylesheets="@../css/styless.css">
+        <HBox alignment="CENTER" layoutX="154.0" layoutY="600.0" prefHeight="50.0" prefWidth="491.0" stylesheets="@../css/styless.css">
             <children>
                 <Button fx:id="prevPageButton" mnemonicParsing="false" onAction="#goToPreviousPage" text="Previous" />
                 <Label fx:id="currentPageLabel" text="" />
