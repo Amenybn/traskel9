@@ -85,8 +85,7 @@ public class InscriptionController {
     @FXML
     private Label passwordStrengthLabel;
     // Twilio account credentials
-    private static final String ACCOUNT_SID = "ACCOUNT_SID";
-    private static final String AUTH_TOKEN = "AUTH_TOKEN";
+
     public void setRegisteredUsers(List<Utilisateur> registeredUsers) {
         this.registeredUsers = registeredUsers;
     }
@@ -237,24 +236,7 @@ public class InscriptionController {
 
     }
 
-    private void sendWelcomeSMS(Utilisateur p) {
-        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
-        String receiverPhoneNumber = tfnum_tel.getText();
-        Message message = Message.creator(
-                new com.twilio.type.PhoneNumber("51371144"), // Receiver's phone number
-                new com.twilio.type.PhoneNumber("+13347589348"), // Twilio phone number
-                "Bienvenue dans notre plateforme Traskel!"
-        ).create();
-        if (message != null) {
-            System.out.println("Message sent successfully.");
-            System.out.println("Message SID: " + message.getSid());
-        } else {
-            System.out.println("Failed to send message.");
-        }
-
-        System.out.println(message.getSid());
-    }
 
 
     private boolean validerCIN(String cin) {
