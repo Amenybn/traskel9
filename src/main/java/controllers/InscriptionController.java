@@ -28,6 +28,11 @@ import services.UtilisateurCrud;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMultipart;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.Request;
 
 
 public class InscriptionController {
@@ -141,7 +146,7 @@ public class InscriptionController {
 
     }
     @FXML
-    void savePerson(ActionEvent event) {
+    void savePerson(ActionEvent event) throws IOException {
         if (tfcin.getText().isEmpty() || tfnum_tel.getText().isEmpty() || tfnom.getText().isEmpty() ||
                 tfprenom.getText().isEmpty() || tfemail.getText().isEmpty() || tfmdp.getText().isEmpty()) {
             // Afficher un message d'erreur si les champs sont vides
@@ -213,6 +218,21 @@ public class InscriptionController {
         // String emailBody = "Bonjour " + p.getPrenom() + ",\n\nBienvenue sur notre plateforme Sportify. Merci pour votre inscription.\n\nCordialement,\nL'équipe de notre plateforme.";
         //Mailing.sendEmail( p.getEmail(), emailSubject, emailBody);
         // Redirection vers la page d'authentification
+        OkHttpClient client = new OkHttpClient();
+
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, "{\"messages\":[{\"destinations\":[{\"to\":\"21651371144\"}],\"from\":\"ServiceSMS\",\"text\":\""+ p.getNom_user() + " | Market address : "  + p.getNom_user()+"\"}]}");
+
+        Request request = new Request.Builder()
+                .url("https://e1kxv1.api.infobip.com/sms/2/text/advanced")
+                .post(body)
+                .addHeader("Authorization", "App 219c8554fe09a34515d5e0ee480f4f89-da377b0c-1572-47e7-a5ba-401f7994d3dc")
+                .addHeader("Content-Type", "application/json")
+                .addHeader("Accept", "application/json")
+                .build();
+
+        Response response = client.newCall(request).execute();
+        System.out.println(response.body().string());
         redirectToAuthPage();
 
     }

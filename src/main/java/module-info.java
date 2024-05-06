@@ -7,6 +7,7 @@ module Sportify {
     requires twilio;
     requires com.google.zxing;
     requires com.google.zxing.javase;
+    requires okhttp3;
     opens  controllers;
     opens entities to javafx.base;
 }
