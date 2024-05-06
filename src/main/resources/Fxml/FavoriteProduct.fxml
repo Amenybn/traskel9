@@ -14,61 +14,60 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.GridPane?>
-
 <?import javafx.scene.control.ScrollPane?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="1214.0" style="-fx-background-color: #2F2B43;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FavoriteProductController">
+<?import javafx.scene.layout.GridPane?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="1214.0" style="-fx-background-color: #F4F4F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.FavoriteProductController">
     <children>
-        <VBox layoutX="10.0" layoutY="10.0" prefHeight="90.0" prefWidth="1388.0" style="-fx-background-color: #393351;">
+        <VBox layoutY="-9.0" prefHeight="98.0" prefWidth="2160.0" style="-fx-background-color: #252525;">
             <children>
-                <HBox alignment="CENTER_LEFT" prefHeight="86.0" prefWidth="1394.0" style="-fx-background-color: #1F1D2B;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <HBox alignment="CENTER_LEFT" prefHeight="94.0" prefWidth="1745.0" style="-fx-background-color: #1F1F1F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <children>
-                        <ImageView fitHeight="50.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../resources/icons8_Home_32px.png" />
+                                <Image url="@../resources/logo.jpg" />
                             </image>
                             <HBox.margin>
-                                <Insets left="10.0" right="5.0" />
+                                <Insets left="40.0" right="5.0" />
                             </HBox.margin>
                         </ImageView>
-                        <Label graphicTextGap="7.0" text="TRASKEL" textFill="WHITE">
+                        <Label graphicTextGap="7.0" text="TRASKEL" textFill="#FFFFFF">
                             <font>
                                 <Font name="System Bold" size="25.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="7.0" />
+                                <Insets left="13.0" />
                             </HBox.margin>
                         </Label>
-                        <Label graphicTextGap="7.0" text="Home" textFill="WHITE">
+                        <Label graphicTextGap="7.0" text="Home" textFill="#FFFFFF">
                             <font>
                                 <Font name="System Bold" size="22.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="200.0" />
+                                <Insets left="220.0" />
                             </HBox.margin>
                         </Label>
-                        <Label graphicTextGap="7.0" text="Shop" textFill="WHITE">
+                        <Label graphicTextGap="7.0" text="Shop" textFill="#FFFFFF">
                             <font>
                                 <Font name="System Bold" size="22.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="30.0" />
+                                <Insets left="50.0" />
                             </HBox.margin>
                         </Label>
-                        <Label graphicTextGap="7.0" text="Services" textFill="WHITE">
+                        <Label graphicTextGap="7.0" text="Services" textFill="#FFFFFF">
                             <font>
                                 <Font name="System Bold" size="22.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="30.0" />
+                                <Insets left="50.0" />
                             </HBox.margin>
                         </Label>
-                        <Label graphicTextGap="7.0" text="Contact Us" textFill="WHITE">
+                        <Label graphicTextGap="7.0" text="Contact Us" textFill="#FFFFFF">
                             <font>
                                 <Font name="System Bold" size="22.0" />
                             </font>
                             <HBox.margin>
-                                <Insets left="30.0" />
+                                <Insets left="50.0" />
                             </HBox.margin>
                         </Label>
                         <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
@@ -76,53 +75,36 @@
                                 <Image url="@../resources/icons8_Person_32px.png" />
                             </image>
                             <HBox.margin>
-                                <Insets left="150.0" />
+                                <Insets left="250.0" />
                             </HBox.margin>
                         </ImageView>
                         <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../resources/icons8_Person_32px.png" />
+                                <Image url="@../resources/icons8-heart-50.png"/>
                             </image>
                             <HBox.margin>
-                                <Insets left="20.0" />
+                                <Insets left="110.0" />
                             </HBox.margin>
                         </ImageView>
                     </children>
                 </HBox>
-
                 <Pane prefHeight="5.0" prefWidth="1388.0" />
             </children>
         </VBox>
-
-        <Pane layoutX="54.0" layoutY="104.0" prefHeight="570.0" prefWidth="920.0" stylesheets="@../css/styless.css">
+        <Pane layoutX="62.0" layoutY="31.0" prefHeight="570.0" prefWidth="1151.0" stylesheets="@../css/styless.css">
             <children>
-                <ScrollPane layoutX="124.0" layoutY="144.0" prefHeight="560.0" prefWidth="920.0" stylesheets="@../css/styless.css">
-                    <AnchorPane prefHeight="580.0" prefWidth="920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-
-                        <GridPane fx:id="gridPane" hgap="70" layoutX="79.0" layoutY="108.0" prefHeight="200.0" prefWidth="821.0" vgap="10">
-
+                <ScrollPane layoutX="124.0" layoutY="144.0" prefHeight="560.0" prefWidth="1200.0" stylesheets="@../css/styless.css">
+                    <AnchorPane prefHeight="580.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane fx:id="gridPane" hgap="70" layoutX="48.0" layoutY="108.0" prefHeight="200.0" prefWidth="201.0" vgap="10">
                         </GridPane>
-
                     </AnchorPane>
                 </ScrollPane>
             </children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="65.0" prefWidth="400.0" stylesheets="@../css/styless.css" VBox.vgrow="NEVER">
-                <VBox.margin>
-                    <Insets left="30.0" right="30.0" />
-                </VBox.margin>
 
-                <styleClass>
-                    <String fx:value="search-box" />
-                    <String fx:value="shadow" />
-                </styleClass>
-            </HBox>
 
         </Pane>
-        <Pane layoutX="-346.0" layoutY="68.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #FA2C56; -fx-background-radius: 70;" />
-        <ComboBox fx:id="categoryComboBox" layoutX="818.0" layoutY="164.0" prefHeight="60.0" prefWidth="200.0" promptText="Tous les catégories" style="-fx-background-color: white;">
-
-        </ComboBox>
-
+        <Pane layoutX="-346.0" layoutY="398.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #365929; -fx-background-radius: 70;" />
+        <!-- Pagination -->
 
     </children>
 </AnchorPane>

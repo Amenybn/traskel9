@@ -37,7 +37,7 @@ public class ProductController {
     private ComboBox<String> categoryComboBox;
 
     private List<Produit> produits;
-    private int itemsPerPage = 6;
+    private int itemsPerPage = 8;
     private int currentPage = 1;
     private int columnCount = 3;
 
@@ -92,7 +92,7 @@ public class ProductController {
         favoriteIcon.setFitWidth(24);
         favoriteIcon.setFitHeight(24);
         HBox imageAndFavoriteBox = new HBox(imageView, favoriteButton);
-
+        imageAndFavoriteBox.setSpacing(10); // Ajouter de l'espace entre l'image et le bouton
         imageAndFavoriteBox.setStyle("-fx-alignment: CENTER_RIGHT;");
         produitBox.getChildren().addAll(imageView, nameLabel, priceLabel, descriptionLabel, favoriteButton);
         produitBox.setStyle("-fx-background-color: #393351; -fx-background-radius: 10px; -fx-padding: 20px;");
@@ -265,7 +265,7 @@ public class ProductController {
 
     private void loadProducts(String category) {
         gridPane.getChildren().clear();
-        int columnCount = 3; // Nombre de colonnes dans la grille
+        int columnCount = 4; // Nombre de colonnes dans la grille
         int rowCount = 0; // Compteur de lignes
         if ("Tous les catégories".equals(category)) {
             produits = loadAllProductsFromDatabase();

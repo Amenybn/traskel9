@@ -3,8 +3,11 @@ package Controllers;
 import entities.Produit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -12,9 +15,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import services.userProductService;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class userProductController {
@@ -58,6 +63,14 @@ public class userProductController {
         // Définir le style du VBox
         produitBox.setStyle("-fx-background-color: #393351; -fx-background-radius: 10px; -fx-padding: 20px;"); // Pour définir la couleur de fond en blanc et arrondir les coins du VBox
         // Retourner le VBox contenant les détails du produit
+
+        produitBox.setOnMouseClicked(event -> {
+            try {
+                showProductDetails(produit);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         return produitBox;
     }
 
@@ -71,7 +84,7 @@ public class userProductController {
 
     public void afficher() {
         gridPane.getChildren().clear();
-        int columnCount = 3;
+        int columnCount = 4;
         int rowCount = 0;
         // Récupérer l'ID de l'utilisateur courant (vous devez définir cette valeur)
         int userId = getUserId(); // Remplacez getUserId() par la méthode pour obtenir l'ID de l'utilisateur courant
@@ -91,5 +104,18 @@ public class userProductController {
 
     public void afficherr(javafx.event.ActionEvent event) {
         afficher();
+    }
+
+
+    private void showProductDetails(Produit produit) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/DetailsProd.fxml"));
+        Parent root = loader.load();
+
+        DetailsProdController detailsProdController = loader.getController();
+        detailsProdController.initData(produit);
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

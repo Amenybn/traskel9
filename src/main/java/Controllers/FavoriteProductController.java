@@ -29,9 +29,9 @@ public class FavoriteProductController {
     private static final String password = "";
     @FXML
     private GridPane gridPane;
-    private int itemsPerPage = 6;
+    private int itemsPerPage = 8;
     private int currentPage = 1;
-    private int columnCount = 3;
+    private int columnCount = 4;
 
     @FXML
     public void initialize() {

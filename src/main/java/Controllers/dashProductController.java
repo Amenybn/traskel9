@@ -3,8 +3,11 @@ package Controllers;
 import entities.Produit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,9 +16,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import services.dashProductService;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class dashProductController {
@@ -41,14 +46,14 @@ public class dashProductController {
         imageView.setFitHeight(150);
 
         Label nameLabel = new Label(produit.getNom_prod());
-        nameLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: white;");
+        nameLabel.setStyle("-fx-font-weight: bold; -fx-text-fill: #030303;");
 
         Label priceLabel = new Label(produit.getPrix_prod() + "DT");
-        priceLabel.setStyle("-fx-text-fill: white;");
+        priceLabel.setStyle("-fx-text-fill: #000000;");
 
         Label descriptionLabel = new Label(produit.getDescrp_prod());
         descriptionLabel.setWrapText(true);
-        descriptionLabel.setStyle("-fx-text-fill: white;");
+        descriptionLabel.setStyle("-fx-text-fill: #050505;");
 
         // Créer un bouton "Supprimer"
         Button deleteButton = new Button("Supprimer");
@@ -58,9 +63,29 @@ public class dashProductController {
         buttonsBox.getChildren().add(deleteButton);
 
         produitBox.getChildren().addAll(imageView, nameLabel, priceLabel, descriptionLabel, buttonsBox);
-        produitBox.setStyle("-fx-background-color: #393351; -fx-background-radius: 10px; -fx-padding: 20px;");
+        produitBox.setStyle("-fx-background-color: #ffffff; -fx-background-radius: 10px; -fx-padding: 20px;");
 
+        produitBox.setOnMouseClicked(event -> {
+            try {
+                showProductDetails(produit);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
         return produitBox;
+    }
+
+
+    private void showProductDetails(Produit produit) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/DetailsProd.fxml"));
+        Parent root = loader.load();
+
+        DetailsProdController detailsProdController = loader.getController();
+        detailsProdController.initData(produit);
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
 
@@ -70,7 +95,7 @@ public class dashProductController {
 
     public void afficher() {
         gridPane.getChildren().clear();
-        int columnCount = 3;
+        int columnCount = 4;
         int rowCount = 0;
         List<Produit> produits = new dashProductService(this).loadProductsFromDatabase();
         for (Produit produit : produits) {
