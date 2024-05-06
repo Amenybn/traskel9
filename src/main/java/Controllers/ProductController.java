@@ -17,7 +17,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import services.CategorieService;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
@@ -42,6 +41,12 @@ public class ProductController {
     private int columnCount = 3;
 
     @FXML
+    private TextField minPriceTextField;
+
+    @FXML
+    private TextField maxPriceTextField;
+
+    @FXML
     public void initialize() {
         List<String> categories = CategorieService.chargerCategories();
         categories.add(0, "Tous les catégories");
@@ -50,6 +55,16 @@ public class ProductController {
 
         categoryComboBox.setOnAction(this::handleCategorySelection);
     }
+
+
+    private Double parsePrice(String priceText) {
+        try {
+            return Double.parseDouble(priceText);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
 
     private Node createProductNode(Produit produit) {
         VBox produitBox = new VBox();
@@ -166,20 +181,24 @@ public class ProductController {
     void handleSearch(ActionEvent event) {
         String searchTerm = searchTextField.getText();
         String selectedCategory = categoryComboBox.getSelectionModel().getSelectedItem();
+        Double minPrice = parsePrice(minPriceTextField.getText());
+        Double maxPrice = parsePrice(maxPriceTextField.getText());
 
         if (selectedCategory == null || selectedCategory.isEmpty() || "Tous les catégories".equals(selectedCategory)) {
-            searchProducts(searchTerm, null);
+            searchProducts(searchTerm, null, minPrice, maxPrice);
         } else {
-            searchProducts(searchTerm, selectedCategory);
+            searchProducts(searchTerm, selectedCategory, minPrice, maxPrice);
         }
     }
 
-    private void searchProducts(String searchTerm, String category) {
+
+
+    private void searchProducts(String searchTerm, String category, Double minPrice, Double maxPrice) {
         gridPane.getChildren().clear();
         int columnCount = 3;
         int rowCount = 0;
 
-        List<Produit> produits = searchProductsFromDatabase(searchTerm, category);
+        List<Produit> produits = searchProductsFromDatabase(searchTerm, category, minPrice, maxPrice);
 
         for (Produit produit : produits) {
             Node produitNode = createProductNode(produit);
@@ -187,8 +206,7 @@ public class ProductController {
             rowCount++;
         }
     }
-
-    private List<Produit> searchProductsFromDatabase(String searchTerm, String category) {
+    private List<Produit> searchProductsFromDatabase(String searchTerm, String category, Double minPrice, Double maxPrice) {
         List<Produit> produits = new ArrayList<>();
         String query;
 
@@ -196,6 +214,14 @@ public class ProductController {
             query = "SELECT * FROM produit WHERE nom_prod LIKE ?";
         } else {
             query = "SELECT * FROM produit WHERE nom_prod LIKE ? AND type_prod = ?";
+        }
+
+        if (minPrice != null) {
+            query += " AND prix_prod >= " + minPrice;
+        }
+
+        if (maxPrice != null) {
+            query += " AND prix_prod <= " + maxPrice;
         }
 
         try (Connection conn = DriverManager.getConnection(url, username, password);
@@ -290,9 +316,17 @@ public class ProductController {
     void handleCategorySelection(ActionEvent event) {
         String selectedCategory = categoryComboBox.getSelectionModel().getSelectedItem();
         if (selectedCategory == null || selectedCategory.isEmpty()) {
+            // Si aucune catégorie n'est sélectionnée, charger tous les produits
             loadProducts(null);
         } else {
+            // Sinon, charger les produits selon la catégorie sélectionnée
             loadProducts(selectedCategory);
+
+            // Initialiser les champs des prix
+            minPriceTextField.setText("");
+            maxPriceTextField.setText("");
+            searchTextField.setText("");
+
         }
     }
 
