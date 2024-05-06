@@ -1,9 +1,9 @@
-package entities;
+/** package entities;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
-public class SmsSender {
+/** public class SmsSender {
     private static final String ACCOUNT_SID = "ACCOUNT_SID";
     private static final String AUTH_TOKEN = "AUTH_TOKEN";
 
@@ -13,7 +13,7 @@ public class SmsSender {
      * @param toPhoneNumber The phone number to send the SMS to.
      * @param messageBody The body of the SMS message.
      */
-    private void sendSms(String toPhoneNumber, String messageBody) {
+    /** private void sendSms(String toPhoneNumber, String messageBody) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 
         Message message = Message.creator(
