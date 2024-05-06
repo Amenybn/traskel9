@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InscriptionController">
+   <children>
+      <ImageView fitHeight="480.0" fitWidth="647.0">
+         <image>
+            <Image url="@../resources/hh.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="86.0" layoutY="81.0" text="Cin" />
+      <TextField fx:id="tfcin" layoutX="198.0" layoutY="77.0" promptText="saisir votre cin" />
+      <Label layoutX="86.0" layoutY="126.0" text="Numéro téléphone" />
+      <TextField fx:id="tfnum_tel" layoutX="198.0" layoutY="122.0" promptText="saisir votre téléphone" />
+      <Label layoutX="87.0" layoutY="170.0" text="Nom" />
+      <Label layoutX="86.0" layoutY="217.0" text="Prénom" />
+      <TextField fx:id="tfnom" layoutX="196.0" layoutY="166.0" promptText="saisir votre nom" />
+      <TextField fx:id="tfprenom" layoutX="196.0" layoutY="214.0" promptText="saisir votre prénom" />
+      <TextField fx:id="tfemail" layoutX="196.0" layoutY="258.0" promptText="saisir votre email" />
+      <Label layoutX="86.0" layoutY="262.0" text="Email" />
+      <Label layoutX="86.0" layoutY="299.0" text="Mot de passe" />
+      <PasswordField fx:id="tfmdp" layoutX="196.0" layoutY="295.0" promptText="saisir votre mot de passe" />
+      <TextField fx:id="tfshowpassword" layoutX="196.0" layoutY="295.0" promptText="Mot de passe" visible="false" />
+      <Label fx:id="passwordStrengthLabel" layoutX="195.0" layoutY="321.0" prefHeight="18.0" prefWidth="282.0" />
+      <CheckBox fx:id="show" layoutX="354.0" layoutY="299.0" mnemonicParsing="false" text="Voir mot de passe" />
+      <Button fx:id="btn_inscri" layoutX="208.0" layoutY="380.0" mnemonicParsing="false" onAction="#savePerson" style="-fx-background-color: #FF6100;" text="S'inscrire" />
+      <RadioButton fx:id="rbproprietaire" layoutX="275.0" layoutY="340.0" mnemonicParsing="false" text="Propriétaire de salle" />
+      <RadioButton fx:id="rbmembre" layoutX="199.0" layoutY="340.0" mnemonicParsing="false" text="Membre" />
+      <Label layoutX="88.0" layoutY="340.0" text="Role" />
+      <Button fx:id="btn_annul" layoutX="279.0" layoutY="380.0" mnemonicParsing="false" onAction="#annuler" style="-fx-background-color: #FF6100;" text="Annuler" />
+      <Hyperlink fx:id="hyperlink" layoutX="174.0" layoutY="423.0" onAction="#redirectToAuthPage" text="Vous avez déjà un compte? cliquer ici" underline="true" />
+      <Text layoutX="428.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inscription">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="145.0" fitWidth="175.0" layoutX="400.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/add-user.png" />
+         </image>
+      </ImageView>
+    
+
+   </children>
+</AnchorPane>
