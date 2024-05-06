@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         // Charger le fichier FXML
-        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/DashListProducts.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/categorie.fxml"));
 
         // Créer une nouvelle scène avec le contenu chargé depuis le fichier FXML
         Scene scene = new Scene(root, 640, 480);

@@ -113,19 +113,15 @@
                                 </Button>
                         </children>
                 </VBox>
-                <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
+                <StackPane layoutX="378.0" layoutY="20.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
                         <children>
-                                <Pane  prefHeight="200.0" prefWidth="200.0" />
+                                <Pane prefHeight="200.0" prefWidth="200.0" />
                                 <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
                                 <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
                                 <Pane fx:id="pnlOverview" prefHeight="354.0" prefWidth="593.0">
                                         <children>
                                                 <Pane fx:id="pnlCustomer" layoutX="10.0" layoutY="10.0" prefHeight="380.0" prefWidth="580.0" style="-fx-background-color: #FFFFFF;" />
-                                                <Button fx:id="btnCustomers" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleClicks" text="Customers">
-                                                        <font>
-                                                                <Font size="14.0" />
-                                                        </font>
-                                                </Button>
+                                                <!-- Le bouton Customers a été supprimé -->
                                                 <Button layoutX="106.0" layoutY="10.0" mnemonicParsing="false" onAction="#downloadChart" text="Download Chart">
                                                         <font>
                                                                 <Font size="14.0" />
@@ -135,6 +131,7 @@
                                 </Pane>
                         </children>
                 </StackPane>
+
         </children>
         <effect>
                 <DropShadow color="#1b1eeb" />
