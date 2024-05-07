@@ -1,0 +1,113 @@
+/* Style pour la table */
+.table-view {
+    -fx-background-color: #02030A; /* Couleur de fond */
+}
+
+/* Style pour les colonnes */
+.table-column {
+    -fx-alignment: CENTER; /* Alignement du contenu */
+    -fx-text-fill: #e7e5e5; /* Couleur du texte */
+    -fx-font-size: 16px; /* Taille de la police */
+}
+
+/* Style pour les en-têtes de colonne */
+.table-header-background {
+    -fx-background-color: #05071F; /* Couleur de fond */
+    -fx-text-fill: #e7e5e5; /* Couleur du texte */
+    -fx-font-size: 18px; /* Taille de la police */
+}
+
+/* Style pour les cellules */
+.table-cell {
+    -fx-alignment: CENTER; /* Alignement du contenu */
+    -fx-text-fill: #e7e5e5; /* Couleur du texte */
+    -fx-font-size: 16px; /* Taille de la police */
+    -fx-padding: 5px; /* Espacement intérieur */
+    -fx-border-color: #ccc; /* Couleur de la bordure */
+    -fx-border-width: 0.5px; /* Largeur de la bordure */
+}
+
+/* Style pour les lignes de la table */
+.table-row-cell {
+    -fx-background-color: #02030A; /* Couleur de fond */
+}
+
+.button
+{
+    -fx-background-color : #05071F;
+    -fx-text-fill : #e7e5e5;
+}
+.button:hover{
+    -fx-background-color : #10165F;
+}
+.button:pressed
+{
+    -fx-background-color : #1620A1;
+}
+
+.scroll-pane {
+    -fx-background-color: #02030A;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #10165F;
+    -fx-background-radius: 5em;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: black;
+}
+
+/* Style pour le titre */
+.dialog-pane .dialog-pane .header-panel .header .label {
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 18px; /* Taille de la police */
+}
+
+/* Style pour les boutons */
+.dialog-pane .button-bar .container .button {
+    -fx-background-color: #05071F; /* Couleur de fond */
+    -fx-text-fill: #e7e5e5; /* Couleur du texte */
+}
+
+.dialog-pane .button-bar .container .button:hover {
+    -fx-background-color: #10165F; /* Couleur de fond au survol */
+}
+
+.dialog-pane .button-bar .container .button:pressed {
+    -fx-background-color: #1620A1; /* Couleur de fond lorsqu'appuyé */
+}
+/* Style pour le titre */
+.dialog-pane .dialog-pane .header-panel .header .label {
+    -fx-text-fill: #e7e5e5; /* Couleur du texte */
+    -fx-font-size: 20px; /* Taille de la police */
+    -fx-font-weight: bold; /* Texte en gras */
+    -fx-alignment: center; /* Alignement au centre */
+}
+.dialog-pane .label {
+    -fx-text-fill: #05071F;
+}
+/* Style pour le contenu */
+.dialog-pane .content {
+    -fx-font-weight: bold; /* Texte en gras */
+    -fx-font-size: 16px; /* Taille de la police */
+    -fx-text-fill: #10165F; /* Couleur du texte */
+}
