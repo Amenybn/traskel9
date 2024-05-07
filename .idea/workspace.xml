@@ -4,7 +4,90 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8626dbff-658e-4ef2-aee7-adabb84d717d" name="Changes" comment="" />
+    <list default="true" id="8626dbff-658e-4ef2-aee7-adabb84d717d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/photos/f8ec6600-5f1b-451d-9a5e-6027fd0bff25C52.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controllers/Sess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/Authentification.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/ListUtilisateurs.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/ProfilAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/ProfilMembre.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/ProfilProp.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Fxml/inscrp.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/css/Dashboard.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/resources/hh.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/CategorieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/CategorieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ChartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ChartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ControllerAjoutProd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ControllerAjoutProd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/DetailsProdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/DetailsProdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/FavoriteProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/FavoriteProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/dashProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/dashProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controllers/userProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controllers/userProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AuthentificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AuthentificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/InscriptionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/InscriptionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ListeUtilisateursController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ListeUtilisateursController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ProfilAdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ProfilAdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ProfilMembreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ProfilMembreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ProfilPropController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ProfilPropController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/enums/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/enums/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/UtilisateurCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/UtilisateurCrud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/dashProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/dashProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/userProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/userProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/MainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tests/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tests/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/DashListProducts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/DashListProducts.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/FavoriteProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/FavoriteProduct.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/ListProducts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/ListProducts.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/ListUserProducts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/ListUserProducts.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/ListUserProductss.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/ListUserProductss.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Fxml/chartCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Fxml/chartCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ListeUtilisateurs.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ListeUtilisateurs.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ProfilAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProfilAdmin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ProfilMembre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProfilMembre.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ProfilProp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProfilProp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/authentification.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/authentification.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/inscription.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/inscription.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/1e5e310f-9a9a-44d2-996e-2ea66871d3f1imagee.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/1e5e310f-9a9a-44d2-996e-2ea66871d3f1imagee.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/ben-affleck.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/ben-affleck.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/cat.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/cat.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/chart.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/chart.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/eruro.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/eruro.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/flag.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/flag.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/group.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/group.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/heart_833472.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/heart_833472.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/ic_usr.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/ic_usr.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8-heart-50.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8-heart-50.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Bill_50px_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Bill_50px_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Block_50px_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Block_50px_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Box_32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Box_32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Broccoli_64px_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Broccoli_64px_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Car_52px_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Car_52px_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_GPS_Antenna_64px_1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_GPS_Antenna_64px_1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Home_32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Home_32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Meanpath_64px_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Meanpath_64px_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Open_Envelope_32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Open_Envelope_32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Person_32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Person_32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Play_48px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Play_48px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Play_Button_50px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Play_Button_50px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Search_52px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Search_52px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Shopping_Cart_50px_2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Shopping_Cart_50px_2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Sign_Out_32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Sign_Out_32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Slider__32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Slider__32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/icons8_Xbox_Menu_32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/icons8_Xbox_Menu_32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/jimmy-fallon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/jimmy-fallon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/logo.avif" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/logo.avif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/logo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/logo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/profile-adam-levine.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/profile-adam-levine.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/profile-james-marsden.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/profile-james-marsden.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/red.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/red.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/time.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/time.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/transparent.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/resources/transparent.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,29 +118,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.WorkshopJDBC3A56 [clean,javafx:run].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.WorkshopJDBC3A56 [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Amani/OneDrive/Bureau/Add Aff&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Maven.WorkshopJDBC3A56 [clean,javafx:run].executor": "Run",
+    "Maven.WorkshopJDBC3A56 [org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "integ",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ASUS/Downloads/traskel9",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ASUS\IdeaProjects\traskel9\src\main" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn clean javafx:run" />
@@ -106,7 +195,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a2200553-a07a-47d5-aa75-c5bb5c549f75" name="Changes" comment="" />
+      <changelist id="8626dbff-658e-4ef2-aee7-adabb84d717d" name="Changes" comment="" />
       <created>1710489487793</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -118,6 +207,7 @@
       <workItem from="1711639610755" duration="18693000" />
       <workItem from="1711732644425" duration="29313000" />
       <workItem from="1711920591006" duration="5778000" />
+      <workItem from="1715045363897" duration="12100000" />
     </task>
     <servers />
   </component>

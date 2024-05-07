@@ -1,6 +1,6 @@
 package services;
 
-import Controllers.dashProductController;
+import controllers.dashProductController;
 import entities.Categorie;
 import entities.Produit;
 import javafx.collections.FXCollections;

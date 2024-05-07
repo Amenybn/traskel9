@@ -70,20 +70,13 @@
                                 <Insets left="50.0" />
                             </HBox.margin>
                         </Label>
-                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../resources/icons8_Person_32px.png" />
-                            </image>
-                            <HBox.margin>
-                                <Insets left="250.0" />
-                            </HBox.margin>
-                        </ImageView>
+                        <HBox spacing="10" />
                         <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../resources/icons8-heart-50.png" />
                             </image>
                             <HBox.margin>
-                                <Insets left="110.0" />
+                                <Insets bottom="10.0" left="220.0" />
                             </HBox.margin>
                         </ImageView>
                     </children>
@@ -124,11 +117,18 @@
         </ComboBox>
            <TextField fx:id="minPriceTextField" layoutX="822.0" layoutY="95.0" />
    
-           <!-- Champ de texte pour le prix maximum -->
+                                   <!-- Champ de texte pour le prix maximum -->
            <Label layoutX="443.0" layoutY="98.0" text="Prix maximum:" />
            <TextField fx:id="maxPriceTextField" layoutX="548.0" layoutY="95.0" />
            <Label layoutX="718.0" layoutY="99.0" text="Prix minimum:" />
             <Button layoutX="1022.0" layoutY="94.0" onAction="#handleSearch" text="Filtrer" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="891.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../resources/icons8_Person_32px.png" />
+                    </image>
+                </ImageView>
+                <Button layoutX="933.0" layoutY="-11.0" onAction="#handleButtonAction" text="Profile" />
+         <Button layoutX="1112.0" layoutY="-11.0" onAction="#handleButtonActionn" text="Favoris" />
         </Pane>
 
 

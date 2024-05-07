@@ -20,7 +20,7 @@ public class HomePage extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            Parent root= FXMLLoader.load(getClass().getResource("/inscription.fxml"));
+            Parent root= FXMLLoader.load(getClass().getResource("/Fxml/inscrp.fxml"));
             primaryStage.setTitle("Inscription");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();

@@ -1,4 +1,4 @@
-package Controllers;
+package controllers;
 
 import javafx.embed.swing.SwingNode;
 import javafx.event.ActionEvent;

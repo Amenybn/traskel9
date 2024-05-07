@@ -7,11 +7,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-
-
-import com.twilio.Twilio;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.rest.lookups.v1.PhoneNumber;
 import entities.Mailing;
 import entities.QRcodeGen;
 import entities.Utilisateur;
@@ -125,7 +120,7 @@ public class InscriptionController {
         hyperlink.setOnAction(event -> {
             try {
                 // Chargez la page d'authentification depuis le fichier FXML
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/authentification.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Authentification.fxml"));
                 Parent root = loader.load();
 
                 // Créez une nouvelle scène et un nouveau stage
@@ -177,7 +172,7 @@ public class InscriptionController {
         // Sauvegarde de personne dans la BD
 
 
-        Utilisateur p = new Utilisateur(Integer.parseInt(tfcin.getText()), Integer.parseInt(tfnum_tel.getText()), tfnom.getText(), tfprenom.getText(), tfemail.getText(), tfmdp.getText(), rbmembre.isSelected() ? Role.MEMBRE : Role.PROPRIETAIRE);
+        Utilisateur p = new Utilisateur(Integer.parseInt(tfcin.getText()), Integer.parseInt(tfnum_tel.getText()), tfnom.getText(), tfprenom.getText(), tfemail.getText(), tfmdp.getText(), rbmembre.isSelected() ? Role.MEMBRE : Role.LIVREUR);
 
         // Ajouter des vérifications ici avant d'ajouter l'utilisateur
         UtilisateurCrud uc = new UtilisateurCrud();
@@ -220,7 +215,7 @@ public class InscriptionController {
         OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse("application/json");
-        RequestBody body = RequestBody.create(mediaType, "{\"messages\":[{\"destinations\":[{\"to\":\"21651371144\"}],\"from\":\"ServiceSMS\",\"text\":\""+ p.getNom_user() + " | Market address : "  + p.getNom_user()+"\"}]}");
+        RequestBody body = RequestBody.create(mediaType, "{\"messages\":[{\"destinations\":[{\"to\":\"21651371144\"}],\"from\":\"ServiceSMS\",\"text\":\""+ "Bienvenue dans notre Plateform" + " Traskel: "  + p.getNom_user()+"\"}]}");
 
         Request request = new Request.Builder()
                 .url("https://e1kxv1.api.infobip.com/sms/2/text/advanced")
@@ -345,7 +340,8 @@ public class InscriptionController {
     private void redirectToAuthPage() {
         try {
             // Load the authentication FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/authentification.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/" +
+                    "Authentification.fxml"));
             Parent authParent = loader.load();
 
             // Create a new scene

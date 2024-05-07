@@ -19,7 +19,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="611.0">
          <image>
-            <Image url="@../resources/hh.jpg" />
+            <Image url="@resources/hh.jpg" />
          </image>
       </ImageView>
       <Pane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #FF6100;">
@@ -30,7 +30,7 @@
                   <Font name="System Bold" size="12.0" />
                </font></Button>
             <Line endX="60.199981689453125" endY="-1.52587890625E-5" layoutX="99.0" layoutY="184.0" startX="-74.30708312988281" startY="-1.52587890625E-5" />
-            <Button fx:id="btn_deco1" alignment="CENTER" layoutX="27.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #FF6100; -fx-border-color: #FFFFFF;" text="Abonnement" textFill="#fcf8f8">
+            <Button fx:id="btn_deco1" alignment="CENTER" layoutX="27.0" layoutY="256.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="135.0" style="-fx-background-color: #FF6100; -fx-border-color: #FFFFFF;" text="Produits" textFill="#fcf8f8"  onAction="#showHome">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>

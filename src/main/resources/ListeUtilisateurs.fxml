@@ -15,7 +15,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="780.0">
          <image>
-            <Image url="@../resources/hh.jpg" />
+            <Image url="@resources/hh.jpg" />
          </image>
       </ImageView>
       <TableView fx:id="tableView" editable="true" layoutY="197.0" prefHeight="200.0" prefWidth="780.0" style="-fx-border-color: #FF6100; -fx-background-color: #FF6100;">

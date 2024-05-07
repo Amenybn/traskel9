@@ -9,6 +9,7 @@ import entities.Utilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -145,7 +146,8 @@ public class ProfilPropController {
                 stage.close();
 
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/authentification.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/" +
+                            "Authentification.fxml"));
                     Parent root = loader.load();
                     Stage authStage = new Stage();
                     authStage.setScene(new Scene(root));
@@ -191,6 +193,44 @@ public class ProfilPropController {
             utilisateurCrud.modifierEntite(utilisateur);
         });
     }
+    public void handleButtonAction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/ProfilMembre.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void handleButtonActionn(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/FavoriteProduct.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleButtonActionnn(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/AddProducts.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

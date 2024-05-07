@@ -1,6 +1,7 @@
-package Controllers;
+package controllers;
 
 import entities.Produit;
+import entities.Utilisateur;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import services.CategorieService;
+import services.UtilisateurCrud;
+
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
@@ -348,7 +351,14 @@ public class ProductController {
     }
 
     private int getCurrentUserId() {
-        // Implémentez le code pour obtenir l'ID de l'utilisateur actuel
-        return 1; // Par exemple, retourne toujours l'ID 1 pour le moment
+        String email = Sess.getEmailUtilisateurCourant();
+        if (email != null) {
+            UtilisateurCrud utilisateurCrud = new UtilisateurCrud();
+            Utilisateur utilisateur = utilisateurCrud.getUtilisateurByEmail(email);
+            if (utilisateur != null) {
+                return utilisateur.getId();
+            }
+        }
+        return -1; // Retourne -1 ou une autre gestion d'erreur si l'utilisateur n'est pas trouvé
     }
 }

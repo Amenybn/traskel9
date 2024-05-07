@@ -2,7 +2,7 @@ package entities.enums;
 
 public enum Role {
     MEMBRE,
-    PROPRIETAIRE,
+    LIVREUR,
     admin;
 
 

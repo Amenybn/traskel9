@@ -12,8 +12,10 @@ import java.util.ResourceBundle;
 import entities.Utilisateur;
 import entities.enums.Role;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -179,7 +181,7 @@ public class ProfilAdminController {
                 stage.close();
 
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/authentification.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Authentification.fxml"));
                     Parent root = loader.load();
                     Stage authStage = new Stage();
                     authStage.setScene(new Scene(root));
@@ -197,7 +199,7 @@ public class ProfilAdminController {
         btn_membres.setOnAction(event -> {
             try {
                 // Charger le fichier FXML de la page ListeUtilisateurs
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ListeUtilisateurs.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/ListUtilisateurs.fxml"));
                 Parent root = loader.load();
 
                 // Créer une nouvelle scène avec le contenu chargé du fichier FXML
@@ -220,7 +222,7 @@ public class ProfilAdminController {
 
     @FXML
     void afficherProprietairesSalles() {
-        ObservableList<Utilisateur> utilisateurs = utilisateurCrud.getUtilisateursByRole(Role.PROPRIETAIRE);
+        ObservableList<Utilisateur> utilisateurs = utilisateurCrud.getUtilisateursByRole(Role.LIVREUR);
 // Mettre à jour les éléments affichés dans la TableView
         tableView.setItems(utilisateurs);
     }
@@ -241,5 +243,43 @@ public class ProfilAdminController {
         // Appeler la méthode de mise à jour appropriée du CRUD Utilisateur
         utilisateurCrud.modifierEntite(u);
     }
+    public void handleButtonAction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/ProfilMembre.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void handleButtonActionn(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/FavoriteProduct.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleButtonActionnn(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/AddProducts.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

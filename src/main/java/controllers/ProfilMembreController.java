@@ -11,8 +11,10 @@ import java.util.ResourceBundle;
 
 import entities.Utilisateur;
 import entities.enums.Role;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -124,7 +126,7 @@ public class ProfilMembreController {
                 stage.close();
 
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/authentification.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/Authentification.fxml"));
                     Parent root = loader.load();
                     Stage authStage = new Stage();
                     authStage.setScene(new Scene(root));
@@ -181,6 +183,57 @@ public class ProfilMembreController {
         // Appeler la méthode de mise à jour appropriée du CRUD Utilisateur
         utilisateurCrud.modifierEntite(u);
     }
+    public void showHome(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/ListProducts.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((javafx.scene.control.Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void handleButtonAction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/ProfilMembre.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void handleButtonActionn(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/FavoriteProduct.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void handleButtonActionnn(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/AddProducts.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

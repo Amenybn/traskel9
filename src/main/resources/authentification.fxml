@@ -17,7 +17,7 @@
 
       <ImageView fitHeight="400.0" fitWidth="612.0" layoutX="-6.0">
          <image>
-            <Image url="@../resources/hh.jpg" />
+            <Image url="@resources/hh.jpg" />
          </image>
       </ImageView>
       <TextField fx:id="tfemail" layoutX="225.0" layoutY="216.0" promptText="Email" />

@@ -325,16 +325,16 @@ public class AuthentificationController {
             String fxmlFileName;
             switch (roles) {
                 case "ADMIN":
-                    fxmlFileName = "/ProfilAdmin.fxml";
+                    fxmlFileName = "/Fxml/ProfilAdmin.fxml";
                     break;
                 case "admin":
-                    fxmlFileName = "/ProfilAdmin.fxml";
+                    fxmlFileName = "/Fxml/ProfilAdmin.fxml";
                     break;
                 case "MEMBRE":
-                    fxmlFileName = "/ProfilMembre.fxml";
+                    fxmlFileName = "/Fxml/ProfilMembre.fxml";
                     break;
-                case "PROPRIETAIRE":
-                    fxmlFileName = "/ProfilProp.fxml";
+                case "LIVREUR":
+                    fxmlFileName = "/Fxml/ProfilProp.fxml";
                     break;
                 default:
                     // Gérer d'autres cas si nécessaire

@@ -1,6 +1,7 @@
-package Controllers;
+package controllers;
 
 import entities.Produit;
+import entities.Utilisateur;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import services.UtilisateurCrud;
 import services.userProductService;
 
 import java.io.File;
@@ -87,7 +89,7 @@ public class userProductController {
         int columnCount = 4;
         int rowCount = 0;
         // Récupérer l'ID de l'utilisateur courant (vous devez définir cette valeur)
-        int userId = getUserId(); // Remplacez getUserId() par la méthode pour obtenir l'ID de l'utilisateur courant
+        int userId = getCurrentUserId(); // Remplacez getUserId() par la méthode pour obtenir l'ID de l'utilisateur courant
         List<Produit> produits = new userProductService(this).loadProductsFromDatabase(userId);
         for (Produit produit : produits) {
             Node produitNode = createProductNode(produit);
@@ -97,9 +99,16 @@ public class userProductController {
     }
 
     // Méthode fictive pour récupérer l'ID de l'utilisateur courant
-    private int getUserId() {
-        // Implémentez cette méthode pour récupérer l'ID de l'utilisateur courant
-        return 1; // Pour l'exemple, retourne toujours l'ID 1
+    private int getCurrentUserId() {
+        String email = Sess.getEmailUtilisateurCourant();
+        if (email != null) {
+            UtilisateurCrud utilisateurCrud = new UtilisateurCrud();
+            Utilisateur utilisateur = utilisateurCrud.getUtilisateurByEmail(email);
+            if (utilisateur != null) {
+                return utilisateur.getId();
+            }
+        }
+        return -1; // Retourne -1 ou une autre gestion d'erreur si l'utilisateur n'est pas trouvé
     }
 
     public void afficherr(javafx.event.ActionEvent event) {

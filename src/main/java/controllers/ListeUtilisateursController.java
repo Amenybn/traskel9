@@ -12,10 +12,16 @@ import entities.Utilisateur;
 import entities.enums.Role;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import services.UtilisateurCrud;
 import javafx.scene.layout.HBox;
@@ -71,6 +77,11 @@ public class ListeUtilisateursController {
     private TableColumn<Utilisateur, Void> colAction;
 
     private UtilisateurCrud utilisateurCrud = new UtilisateurCrud();
+    @FXML
+    private Object btnCustomers;
+    @FXML
+    private Node pnlCustomer;
+
     public void setResId(String resId) {
         this.colId.setText(resId);
     }
@@ -315,7 +326,7 @@ public class ListeUtilisateursController {
         totalMembres.setText(String.valueOf(membres));
 
         // Récupérer le nombre de propriétaires après la suppression
-        int proprietaires = utilisateurCrud.countUsersByRole("PROPRIETAIRE");
+        int proprietaires = utilisateurCrud.countUsersByRole("LIVREUR");
         totalProprietaires.setText(String.valueOf(proprietaires));
 
         // Récupérer le nombre d'administrateurs après la suppression
@@ -328,7 +339,52 @@ public class ListeUtilisateursController {
     }
     @FXML
     void afficherProprietairesSalles() {
-        ObservableList<Utilisateur> proprietaires = utilisateurCrud.getUtilisateursByRole(Role.PROPRIETAIRE);
+        ObservableList<Utilisateur> proprietaires = utilisateurCrud.getUtilisateursByRole(Role.LIVREUR);
         tableView.setItems(proprietaires);
+    }
+    public void handleClicks(ActionEvent actionEvent) {
+        if (actionEvent.getSource() == btnCustomers) {
+            pnlCustomer.setStyle("-fx-background-color : #1620A1");
+            pnlCustomer.toFront();
+        }
+
+    }
+
+    public void handleButtonActionnn(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/AddProducts.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleButtonAction(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/ProfilMembre.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void handleButtonActionn(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/FavoriteProduct.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

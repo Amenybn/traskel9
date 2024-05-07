@@ -398,7 +398,7 @@ public class UtilisateurCrud implements IUtilisateurCrud<Utilisateur> {
     // Méthode pour calculer le nombre d'utilisateurs selon leur rôle
     public int countUsersByRole(String role) {
         Connection cnx = MyConnection.instance.getCnx();
-        String req = "SELECT COUNT(*) FROM user WHERE role=?";
+        String req = "SELECT COUNT(*) FROM user WHERE roles=?";
         try {
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setString(1, role);

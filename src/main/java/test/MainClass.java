@@ -11,7 +11,7 @@ public class MainClass {
         MyConnection mc=MyConnection.getInstance();
         MyConnection mc2=MyConnection.getInstance();
         System.out.println(mc.hashCode()+"-"+mc2.hashCode());
-        Utilisateur p=new Utilisateur(14505878,53378560,"feki","malek","malekfeki18@gmail.com","", Role.MEMBRE);
+        Utilisateur p=new Utilisateur(14505878,51371144,"Ben","shaima","chaimachaimanourddin@gmail.com","", Role.MEMBRE);
         UtilisateurCrud pcd=new UtilisateurCrud();
          System.out.println(pcd.afficherEntite());
         pcd.ajouterEntite2(p);

@@ -20,7 +20,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="601.0">
          <image>
-            <Image url="@../resources/hh.jpg"/>
+            <Image url="@resources/hh.jpg"/>
          </image>
       </ImageView>
       <Pane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #FF6100;" stylesheets="@../resources/Dashboard.css">

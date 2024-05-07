@@ -1,6 +1,7 @@
 package services;
 
-import Controllers.userProductController;
+import controllers.userProductController;
+import controllers.userProductController;
 import entities.Categorie;
 import entities.Produit;
 import javafx.collections.FXCollections;
@@ -35,6 +36,8 @@ public class userProductService {
     public userProductService(userProductController controller) {
         this.controller = controller;
     }
+
+
 
     public void updateProduit(Produit produit) {
 
