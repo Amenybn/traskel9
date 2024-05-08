@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CommandeController">
+    <children>
+
+
+        <TableView fx:id="tableView" layoutX="39.0" layoutY="27.0" prefHeight="329.0" prefWidth="522.0">
+            <columns>
+                <TableColumn fx:id="adresseColumn" prefWidth="150.0" text="Adresse" />
+                <TableColumn fx:id="statutColumn" prefWidth="100.0" text="Statut" />
+                <TableColumn fx:id="prixColumn" prefWidth="75.0" text="Prix" />
+                <TableColumn fx:id="delaiColumn" prefWidth="150.0" text="Delai" />
+            </columns>
+        </TableView>
+        <Button layoutX="478.0" layoutY="366.0" mnemonicParsing="false" onAction="#addCommande" text="Add Commande" />
+        <Button fx:id="generatePdfButton" text="Generate Statistics PDF" onAction="#generateStatisticsPDF" layoutX="50" layoutY="50" />
+    </children>
+</AnchorPane>

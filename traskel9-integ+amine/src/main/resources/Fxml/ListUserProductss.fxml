@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.TextArea?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="1214.0" style="-fx-background-color: #F4F4F4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ControllerAjoutProd">
+    <children>
+        <VBox layoutY="-9.0" prefHeight="98.0" prefWidth="2160.0" style="-fx-background-color: #252525;">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefHeight="94.0" prefWidth="1745.0" style="-fx-background-color: #1F1F1F;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../resources/logo.jpg" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="40.0" right="5.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <Label graphicTextGap="7.0" text="TRASKEL" textFill="#FFFFFF">
+                            <font>
+                                <Font name="System Bold" size="25.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="13.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Label graphicTextGap="7.0" text="Home" textFill="#FFFFFF">
+                            <font>
+                                <Font name="System Bold" size="22.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="220.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Label graphicTextGap="7.0" text="Shop" textFill="#FFFFFF">
+                            <font>
+                                <Font name="System Bold" size="22.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="50.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Label graphicTextGap="7.0" text="Services" textFill="#FFFFFF">
+                            <font>
+                                <Font name="System Bold" size="22.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="50.0" />
+                            </HBox.margin>
+                        </Label>
+                        <Label graphicTextGap="7.0" text="Contact Us" textFill="#FFFFFF">
+                            <font>
+                                <Font name="System Bold" size="22.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets left="50.0" />
+                            </HBox.margin>
+                        </Label>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../resources/icons8_Person_32px.png" />
+                            </image>
+                            <HBox.margin>
+                                <Insets left="250.0" />
+                            </HBox.margin>
+                        </ImageView>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../resources/icons8-heart-50.png"/>
+                            </image>
+                            <HBox.margin>
+                                <Insets left="110.0" />
+                            </HBox.margin>
+                        </ImageView>
+                    </children>
+                </HBox>
+                <Pane prefHeight="5.0" prefWidth="1388.0" />
+            </children>
+        </VBox>
+        <Pane layoutX="462.0" layoutY="131.0" prefHeight="570.0" prefWidth="1151.0" stylesheets="@../css/styless.css">
+            <children>
+                <Pane layoutX="-78.0" layoutY="56.0" prefHeight="492.0" prefWidth="716.0" style="-fx-background-color: #FFFFFF;">
+                    <children>
+                        <VBox layoutX="95.0" layoutY="62.0" prefHeight="393.0" prefWidth="223.0" spacing="9.0">
+                            <!-- Form Fields -->
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du produit">
+                                    <font>
+                                        <Font name="System Italic" size="16.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="nom" prefHeight="34.0" prefWidth="223.0" />
+                                <Label fx:id="nomValidationLabel" textFill="RED" /> <!-- Nouvelle étiquette d'erreur pour le nom -->
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix du produit">
+                                    <font>
+                                        <Font name="System Italic" size="16.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="prix" />
+                                <Label fx:id="prixValidationLabel" textFill="RED" /> <!-- Nouvelle étiquette d'erreur pour le prix -->
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Catégorie du produit">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Text>
+                                <ComboBox fx:id="ListeCat" prefWidth="150.0" />
+                                <Label fx:id="catValidationLabel" textFill="RED" />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description du produit">
+                                    <font>
+                                        <Font name="System Italic" size="16.0" />
+                                    </font>
+                                </Text>
+                                <TextArea fx:id="descrp" prefHeight="66.0" prefWidth="223.0" />
+                            </children>
+                            <padding>
+                                <Insets top="30.0" />
+                            </padding>
+                        </VBox>
+
+                        <!-- Image Upload Section -->
+                        <VBox layoutX="406.0" layoutY="62.0" prefHeight="393.0" prefWidth="310.0" spacing="20.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Photo du produit">
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="System Italic" size="16.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fx:id="photo" fitHeight="131.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../resources/1e5e310f-9a9a-44d2-996e-2ea66871d3f1imagee.png" />
+                                    </image>
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                </ImageView>
+                                <Button fx:id="telechargerImage" mnemonicParsing="false" onAction="#choisirImage" text="Télécharger une image" />
+                                <Label fx:id="photoValidationLabel" textFill="RED" />
+
+                                <!-- Ajout de la logique de validation -->
+                                <Button fx:id="ajouter" alignment="BOTTOM_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#ajouter" prefHeight="30.0" prefWidth="168.0" text="Ajouter votre produit" />
+                                <Button fx:id="annuler" mnemonicParsing="false" onAction="#annuler" prefHeight="30.0" prefWidth="182.0" text="Annuler" />
+                            </children>
+                            <padding>
+                                <Insets top="30.0" />
+                            </padding>
+                        </VBox>
+
+                        <!-- Title -->
+                        <Label layoutX="259.0" layoutY="35.0" text="Ajouter un produit" textFill="#365929">
+                            <font>
+                                <Font name="System Bold Italic" size="28.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="31.0" fitWidth="35.0" layoutX="10.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../resources/icons8_Shopping_Cart_50px_2.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+            </children>
+
+
+        </Pane>
+        <Pane layoutX="-346.0" layoutY="398.0" prefHeight="303.0" prefWidth="467.0" rotate="41.6" style="-fx-background-color: #365929; -fx-background-radius: 70;" />
+        <!-- Pagination -->
+
+    </children>
+</AnchorPane>
