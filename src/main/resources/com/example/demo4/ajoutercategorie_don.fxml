@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<!-- L'image de fond -->
+
+<AnchorPane id="AnchorPane" prefHeight="896.0" prefWidth="1338.0" style="-fx-background-color: #FFEFD5;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo4.Ajoutercategorie_donController">
+   <children>
+      <TextField fx:id="nameField" layoutX="80.0" layoutY="404.0" prefHeight="35.0" prefWidth="126.0" promptText="NOM categorie_don" style="-fx-background-radius: 30;" />
+      <Canvas fx:id="myCanvas" height="355.0" layoutX="326.0" layoutY="396.0" width="837.0" />
+      <Label layoutX="344.0" layoutY="179.0" prefHeight="60.0" prefWidth="370.0" text="AJOUTER categorie_don">
+         <font>
+            <Font name="Calisto MT Bold" size="28.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.8571428571428571" startY="0.4">
+               <stops>
+                  <Stop color="#979797e8" />
+                  <Stop color="#96969648" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill></Label>
+
+      <Label layoutX="10.0" layoutY="373.0" prefHeight="17.0" prefWidth="140.0" text="NOM Categorie_don" textFill="#0a0505">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
+      <Button fx:id="supprimerBoutton" layoutX="851.0" layoutY="552.0" mnemonicParsing="false" onAction="#supprimercategorie_don" prefHeight="44.0" prefWidth="180.0" style="-fx-background-radius: 30;" text="SUPPRIMER" textFill="RED" />
+      <Button fx:id="ajouterButton" layoutX="842.0" layoutY="395.0" mnemonicParsing="false" onAction="#ajoutercategorie_don" prefHeight="44.0" prefWidth="180.0" style="-fx-background-radius: 30;" text="AJOUTER" textFill="#f80000" />
+      <Button fx:id="modifierBoutton" layoutX="851.0" layoutY="474.0" mnemonicParsing="false" onAction="#modifiercategorie_don" prefHeight="44.0" prefWidth="180.0" style="-fx-background-radius: 30;" text="MODIFIER" textFill="RED" />
+
+      <TableView fx:id="categorie_donTv" layoutX="293.0" layoutY="390.0" onMouseClicked="#choisirev" prefHeight="355.0" prefWidth="536.0" style="-fx-background-color: #FFE4B5;">
+        <columns>
+          <TableColumn fx:id="nomevTv" prefWidth="535.0" text="NOM categorie_don" />
+
+
+        </columns>
+      </TableView>
+      <Label fx:id="idLabel" layoutX="31.0" layoutY="98.0" prefHeight="18.0" prefWidth="37.0" />
+      <TextField fx:id="idmodifierField" layoutX="9.0" layoutY="267.0" prefHeight="35.0" prefWidth="99.0" promptText="Id categorie_don" style="-fx-background-radius: 30;" />
+      <ImageView fx:id="imageview" fitHeight="200.0" fitWidth="201.0" layoutX="1031.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="rechercher" layoutX="1051.0" layoutY="392.0" onKeyPressed="#rechercherev" prefHeight="25.0" prefWidth="161.0" promptText="chercher par NOM ou TYPE" />
+      <ImageView fx:id="QrCode" fitHeight="139.0" fitWidth="168.0" layoutX="23.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
+
+   </children>
+</AnchorPane>

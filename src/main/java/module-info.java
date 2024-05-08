@@ -1,17 +1,27 @@
-module com.pi.traskel {
-    requires javafx.controls;
-    requires javafx.fxml;
-    requires mysql.connector.j;
+module Sportify {
     requires java.sql;
     requires java.mail;
-
-
-    opens com.pi.traskel to javafx.fxml;
-    exports com.pi.traskel;
-    exports entities;
-    opens entities to javafx.fxml;
+    requires com.google.zxing;
+    requires com.google.zxing.javase;
+    requires okhttp3;
+    opens  Controllers;
     exports Controllers;
-    opens Controllers to javafx.fxml;
+    // other required modules
+    requires javafx.controls;
+    requires javafx.fxml;
+    opens entities to javafx.base;
+    requires javafx.graphics;
+
+    requires mysql.connector.j;
+    requires java.desktop;
+    requires javafx.swing;
+    requires org.jfree.jfreechart;
+    requires org.apache.pdfbox;
+    requires kernel;
+    requires layout;
+
+    exports tests;
+    opens services;
     exports services;
-    opens services to javafx.fxml;
+
 }

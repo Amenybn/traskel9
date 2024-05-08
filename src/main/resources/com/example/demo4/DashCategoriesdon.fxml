@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo4.Ajoutercategorie_donsController">
+    <children>
+        <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="73.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+
+                    </image>
+                    <VBox.margin>
+                        <Insets bottom="10.0" top="50.0" />
+                    </VBox.margin></ImageView>
+                <Label text="Administrateur" textFill="#e7e5e5">
+                    <VBox.margin>
+                        <Insets bottom="20.0" />
+                    </VBox.margin>
+                </Label>
+                <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@DashStyle.css" text="Home" textFill="#e7e5e5">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@DashStyle.css" text="Livreurs">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnMenus" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@DashStyle.css" text="Catégories">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnPackages" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@DashStyle.css" text="Gifts">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@DashStyle.css" text="Settings">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+                <Button fx:id="btnSignout" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@DashStyle.css" text="Sign Out">
+                    <graphic>
+                        <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                               
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
+            </children>
+        </VBox>
+        <AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+            <children>
+
+                <Label layoutX="344.0" layoutY="179.0" prefHeight="0.0" prefWidth="392.0">
+                    <font>
+                        <Font name="Calisto MT Bold" size="28.0" />
+                    </font>
+                    <textFill>
+
+                    </textFill></Label>
+              <ImageView fx:id="QrCode" fitHeight="145.0" fitWidth="187.0" layoutX="338.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
+
+                
+
+            </children>
+        </AnchorPane>
+
+
+
+          <TableView fx:id="donTv" layoutX="287.0" layoutY="289.0" prefHeight="173.0" prefWidth="661.0" style="-fx-background-color: #FFE4B5;">
+              <columns>
+                  <TableColumn fx:id="nomevTvv" prefWidth="85.0" text="adresse don" />
+                  <TableColumn fx:id="typeevTv" minWidth="0.0" prefWidth="73.0" text="point_don" />
+                  <TableColumn fx:id="imageevTv" minWidth="9.599945068359375" prefWidth="94.0" text="IMAGE don" />
+
+                  <TableColumn fx:id="descriptionevTv" prefWidth="107.0" text="DESCRIPTION" />
+                  <TableColumn fx:id="quantite_donTv" prefWidth="120.0" text="quantite_don" />
+
+                  <TableColumn fx:id="idevTv" prefWidth="180.0" text="nom de categorie" />
+
+              </columns>
+          </TableView>
+
+        <Button fx:id="afficherBouttonn" layoutX="865.0" layoutY="28.0" mnemonicParsing="false" onAction="#navigation" prefHeight="44.0" prefWidth="160.0" style="-fx-background-radius: 30;" text="Ajout Categorie" textFill="RED" />
+
+        <Button fx:id="supprimerBouttonn" layoutX="892.0" layoutY="214.0" mnemonicParsing="false" onAction="#supprimerdon" prefHeight="44.0" prefWidth="130.0" style="-fx-background-radius: 30;" text="SUPPRIMER" textFill="RED" />
+    </children>
+    <effect>
+        <DropShadow color="#1b1eeb" />
+    </effect>
+</AnchorPane>
