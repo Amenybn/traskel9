@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PanierController">
+    <children>
+        <TableView fx:id="tableView" layoutX="39.0" layoutY="27.0" prefHeight="329.0" prefWidth="522.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="nbrProdsColumn" prefWidth="150.0" text="Nombre de Produits" />
+                <TableColumn fx:id="totalPrixColumn" prefWidth="150.0" text="Total Prix" />
+                <TableColumn fx:id="productIdsColumn" text="Product IDs"/>
+
+            </columns>
+        </TableView>
+        <Button layoutX="478.0" layoutY="366.0" mnemonicParsing="false" onAction="#addPanier" text="Add Panier" />
+    </children>
+</AnchorPane>
