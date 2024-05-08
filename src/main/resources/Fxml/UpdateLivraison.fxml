@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="649.0" stylesheets="@../css/Livraison.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="services.UpdateLiv">
+   <children>
+      <VBox layoutX="31.2" layoutY="83.0" prefHeight="274.0" prefWidth="198.0" spacing="12.0" AnchorPane.leftAnchor="31.0">
+         <children>
+            <Label text="Adresse" />
+            <TextField fx:id="adresseCmd" />
+            <Label text="Statut" />
+            <TextField fx:id="statutCmd" />
+            <Label text="Délai" />
+            <TextField fx:id="delaiCmd" />
+            <Label text="Livreur" />
+            <TextField fx:id="livreurCmd" />
+         </children>
+         <padding>
+            <Insets bottom="12.0" left="12.0" right="12.0" />
+         </padding>
+      </VBox>
+      <Label layoutX="47.0" layoutY="28.0" text="Votre Commande">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <ListView fx:id="livreurListView" layoutX="266.0" layoutY="89.0" prefHeight="274.0" prefWidth="246.0" />
+      <Label layoutX="279.0" layoutY="28.0" text="Choisir Nouveau Livreur">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="confirmBtn" layoutX="527.0" layoutY="163.0" mnemonicParsing="false" onAction="#confirmUpdate" prefHeight="46.0" prefWidth="102.0" text="Appliquer" />
+      <TextField fx:id="searchField" layoutX="266.0" layoutY="65.0" prefHeight="26.0" prefWidth="246.0" promptText="Chercher par nom.." />
+   </children>
+</AnchorPane>

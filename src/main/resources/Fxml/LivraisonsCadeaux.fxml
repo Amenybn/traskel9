@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="581.0" prefWidth="861.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LivraisonCadController">
+    <children>
+        <Label fx:id="mainLabel" alignment="CENTER" layoutX="279.0" layoutY="35.0" prefHeight="35.0" prefWidth="302.0" text="LIVRAISONS CADEAUX">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font></Label>
+        <ButtonBar layoutY="332.0" prefHeight="38.0" prefWidth="192.0" />
+      <TableView fx:id="tableLivCad" layoutX="76.0" layoutY="91.0" prefHeight="426.0" prefWidth="709.0">
+        <columns>
+          <TableColumn fx:id="colMEMBRE" prefWidth="221.5999984741211" text="Membre" />
+          <TableColumn fx:id="colCADEAUX" minWidth="0.0" prefWidth="339.1999816894531" text="Cadeaux" />
+            <TableColumn fx:id="colLIVREUR" prefWidth="146.4000244140625" />
+        </columns>
+      </TableView>
+    </children>
+</AnchorPane>
